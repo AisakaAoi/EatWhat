@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/tabbar/recommend/recommend",
+    "pages/tabbar/vegetables/vegetables",
+    "pages/tabbar/recipes/recipes",
+    "pages/tabbar/mycenter/mycenter",
+    "pages/login/login",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#04C09E",
+    "navigationBarTitleText": "今天吃啥",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#8E8E93",
+    "selectedColor": "#04C09E",
+    "backgroundColor": "white",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/tabbar/recommend/recommend",
+        "iconPath": "images/tabbar/recommend_0.png",
+        "selectedIconPath": "images/tabbar/recommend_1.png"
+      },
+      {
+        "pagePath": "pages/tabbar/vegetables/vegetables",
+        "iconPath": "images/tabbar/vegetables_0.png",
+        "selectedIconPath": "images/tabbar/vegetables_1.png"
+      },
+      {
+        "pagePath": "pages/tabbar/recipes/recipes",
+        "iconPath": "images/tabbar/recipes_0.png",
+        "selectedIconPath": "images/tabbar/recipes_1.png"
+      },
+      {
+        "pagePath": "pages/tabbar/mycenter/mycenter",
+        "iconPath": "images/tabbar/mycenter_0.png",
+        "selectedIconPath": "images/tabbar/mycenter_1.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
