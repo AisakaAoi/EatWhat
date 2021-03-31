@@ -19,7 +19,7 @@
       </view>
     </picker>
     <!-- 对应天气显示 -->
-    <text class="tem">{{temperature[0]}}{{temperature[1]}}{{temperature[2]}}</text>
+    <text class="tem">{{cloud}}{{wendu}}{{temperature[2]}}</text>
   </view>
 </view>
 
