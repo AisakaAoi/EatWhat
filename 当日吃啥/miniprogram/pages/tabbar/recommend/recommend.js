@@ -5,26 +5,42 @@ Page({
 
   data: {
     search_city: '',
-    imgsrc:100,
+    imgsrc: 100,
     region: ['广东省', '佛山市', '南海区'],
-    temperature: ["多云","26","℃"],
-    rb_text: ["冷", "牛肉丸汤粉"],
-    imgurl: "/images/recommend/niurou.jpeg",
-    cloud:'',
-    wendu:''
+    weather: ['多云', '26', '℃'],
+    rb_text: ['冷', '牛肉丸汤粉'],
+    imgurl: '/images/recommend/niurou.jpeg',
+    cloud: '',
+    temperature: '', 
   },
 
   onLoad: function () {
     this.setData({
       search_city: "广州"
-     })
-     this.bindRegionWeather();
-    
+    })
+    this.bindRegionWeather()
   },
 
   onShow: function () {
 
   },
+
+  // 实现选择城市改变region数据
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value, 
+    })
+    this.bindRegionWeather()
+  },
+
+  // 用于实现根据所选城市显示天气数据
+  bindRegionWeather: function () {
+    this.setData({
+      search_city: this.data.region[1], 
+    })
+    // 此处修改天气数值 0:天气 1:气温 
+    this.getWeather(this.data.search_city)
+  }, 
 
   // 根据城市获取天气预报
   getWeather: function (city) {
@@ -41,8 +57,8 @@ Page({
         }
         that.setData({
           city: city,
-          cloud:res.data.HeWeather6[0].now.cond_txt,
-          wendu:res.data.HeWeather6[0].now.tmp
+          cloud: res.data.HeWeather6[0].now.cond_txt,
+          temperature: res.data.HeWeather6[0].now.tmp
         })
       },
       complete: () => {
@@ -51,22 +67,5 @@ Page({
     })
   },
 
-  // 实现选择城市改变region数据
-  bindRegionChange: function(e){
-    console.log("picker changing", e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-    this.bindRegionWeather()
-  },
-
-  // 用于实现根据所选城市显示天气数据
-  bindRegionWeather: function(){
-    this.setData({
-      search_city: this.data.region[1]
-     })
-    console.log(this.data.region[0], this.data.region[1], this.data.region[2])
-    // 此处修改天气数值 0:天气 1:气温 
-    this.getWeather(this.data.search_city);
-  }
+  
 })
