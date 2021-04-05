@@ -8,10 +8,70 @@ Page({
     imgsrc: 100,
     region: ['广东省', '佛山市', '南海区'],
     weather: ['多云', '26', '℃'],
-    rb_text: ['冷', '牛肉丸汤粉'],
-    imgurl: '/images/recommend/niurou.jpeg',
     cloud: '',
     temperature: '', 
+    // 用于动态数据绑定
+    rec: [{
+      // recommend image
+      "rc_imgurl": "/images/recommend/niurou.jpeg",
+      // recommend description
+      "rc_des": "米其林级别～",
+      // recommend title
+      "rc_title": "牛肉丸汤粉",
+      // favorite_icon
+      "rc_fav": "/images/recommend/favorite.png",
+      // recommend type
+      "rc_type": "午餐/晚餐/夜宵"
+    },
+    {
+      // recommend image
+      "rc_imgurl": "/images/recommend/niurou.jpeg",
+      // recommend description
+      "rc_des": "米其林级别",
+      // recommend title
+      "rc_title": "牛肉丸汤粉",
+      // favorite_icon
+      "rc_fav": "/images/recommend/favorite.png",
+      // recommend type
+      "rc_type": "午餐/晚餐/夜宵"
+    },
+    {
+      // recommend image
+      "rc_imgurl": "/images/recommend/niurou.jpeg",
+      // recommend description
+      "rc_des": "米其林级别",
+      // recommend title
+      "rc_title": "牛肉丸汤粉",
+      // favorite_icon
+      "rc_fav": "/images/recommend/favorite.png",
+      // recommend type
+      "rc_type": "午餐/晚餐/夜宵"
+    },
+    {
+      // recommend image
+      "rc_imgurl": "/images/recommend/niurou.jpeg",
+      // recommend description
+      "rc_des": "米其林级别",
+      // recommend title
+      "rc_title": "牛肉丸汤粉",
+      // favorite_icon
+      "rc_fav": "/images/recommend/favorite.png",
+      // recommend type
+      "rc_type": "午餐/晚餐/夜宵"
+    },
+    {
+      // recommend image
+      "rc_imgurl": "/images/recommend/niurou.jpeg",
+      // recommend description
+      "rc_des": "米其林级别",
+      // recommend title
+      "rc_title": "牛肉丸汤粉",
+      // favorite_icon
+      "rc_fav": "/images/recommend/favorite.png",
+      // recommend type
+      "rc_type": "午餐/晚餐/夜宵"
+    }
+  ]
   },
 
   onLoad: function () {
@@ -66,6 +126,11 @@ Page({
       }
     })
   },
+
+  // 绑定收藏函数
+  onFavoriteClick: function(){
+    console.log("Clicking Heart")
+  }
 
   
 })
