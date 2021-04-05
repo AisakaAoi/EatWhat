@@ -25,8 +25,21 @@
           "scene": null
         },
         {
-          "name": "pages/tabbar/mycenter/mycenter",
-          "pathName": "pages/tabbar/mycenter/mycenter",
+          "name": "pages/tabbar/vegetables/vegetables",
+          "pathName": "pages/tabbar/vegetables/vegetables",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tabbar/recipes/recipes",
+          "pathName": "pages/tabbar/recipes/recipes",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/detail",
+          "pathName": "pages/detail/detail",
+          "query": "",
           "scene": null
         }
       ]
