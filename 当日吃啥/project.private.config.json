@@ -41,6 +41,11 @@
           "pathName": "pages/detail/detail",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/tabbar/recommend/recommend",
+          "pathName": "pages/tabbar/recommend/recommend",
+          "scene": null
         }
       ]
     }
