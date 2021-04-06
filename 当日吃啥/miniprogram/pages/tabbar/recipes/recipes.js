@@ -1,5 +1,5 @@
 // pages/tabbar/recipes/recipes.js
-const recList = require("../../../js/List")
+const recList = require("../../../js/list")
 Page({
   data: {
     rightShow: false,
