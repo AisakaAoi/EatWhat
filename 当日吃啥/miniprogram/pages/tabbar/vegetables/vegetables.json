@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "蔬菜识别"
+  "navigationBarTitleText": "蔬菜识别",
+  "disableScroll": true
 }

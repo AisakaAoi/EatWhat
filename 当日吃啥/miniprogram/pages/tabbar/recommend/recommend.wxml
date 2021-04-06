@@ -1,57 +1,47 @@
 <!--pages/tabbar/recommend/recommend.wxml-->
-
 <view>
 
   <!-- 搜索栏功能 -->
   <view class="top-bar">
-    
+
     <!-- 搜索栏 NF: 绑定搜索、模糊搜索 -->
     <view class="search-bar" mode="widthFix">
       <icon class="search-icon" size="25" type="search"></icon>
       <input placeholder-class="ph-class" type="text" confirm-type="go" placeholder="输入搜索信息" value="{{searchValue}}" />
     </view>
 
+
     <!-- 天气视窗 （为picker）目前会出现溢出 -->
     <view class="weather-bar">
       <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
-        <view class="weather-pos">
+        <view class="pos">
           {{region[1]}}
           <image class="arrow-down" mode="widthFix" src="/images/recommend/arrow_down.png" />
         </view>
       </picker>
+      <!-- 对应天气显示 -->
       <view class="weather-info">
-        <view class="weather-cloud">{{cloud}}</view>
-        <view class="weather-tem">{{temperature}}{{weather[2]}}</view>
+        <view class="cloud">{{cloud}}</view>
+        <view class="tem">{{temperature}}{{weather[2]}}</view>
       </view>
       <!-- <text class="tem">{{cloud}}{{temperature}}{{weather[2]}}</text> -->
     </view>
   </view>
-
-  <!-- 推荐文本 -->
-  <!-- <view class="recommend-text"> -->
-  <!-- <view class="rt-title"> -->
-  <!-- <text>推荐:</text> -->
-  <!-- </view> -->
-  <!-- 推荐语句 先以语句形式出现 后续进行数据绑定 demo如下 -->
-  <!-- <view class="rt-body"> -->
-  <!-- <text>今天天气有点{{rb_text[0]}}，要不要来一碗美味又暖胃的牛肉丸汤粉呢？</text> -->
-  <!-- </view> -->
-  <!-- </view> -->
-
   <!-- 推荐菜品 -->
   <!-- 以下涉及数据绑定内容 -->
+  <scroll-view scroll-y="true" style="height" style="height:{{windowHeight-50}}px;">
+    <view class="recommend-context" wx:for="{{rec}}" wx:key="this">
+      <image class="rc-img" src="{{item.rc_imgurl}}" />
+      <view class="rc-des">{{item.rc_des}}</view>
+      <view class="rc-title">{{item.rc_title}}</view>
+      <view class="rc-type">{{item.rc_type}}</view>
+      <!-- 收藏图标 还未绑定点击及颜色变化 -->
+      <image class="rc-fav" src="{{item.rc_fav}}" mode="widthFix" bindtap="onFavoriteClick" />
+    </view>
+    <view class="nomore">
+      <text>没有更多啦～</text>
+    </view>
+  </scroll-view>
 
-  <view class="recommend-context" wx:for="{{rec}}" wx:key="this">
-    <image class="rc-img" src="{{item.rc_imgurl}}" />
-    <view class="rc-des">{{item.rc_des}}</view>
-    <view class="rc-title">{{item.rc_title}}</view>
-    <view class="rc-type">{{item.rc_type}}</view>
-    <!-- 收藏图标 还未绑定点击及颜色变化 -->
-    <image class="rc-fav" src="{{item.rc_fav}}" mode="widthFix" bindtap="onFavoriteClick" />
-  </view>
-
-  <view class="nomore">
-    <text>没有更多啦～</text>
-  </view>
 
 </view>

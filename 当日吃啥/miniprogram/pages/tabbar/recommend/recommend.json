@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "今日推荐"
+  "navigationBarTitleText": "今日推荐",
+  "disableScroll": true
 }
