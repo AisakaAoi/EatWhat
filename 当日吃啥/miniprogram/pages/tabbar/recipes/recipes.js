@@ -1,6 +1,7 @@
 // pages/tabbar/recipes/recipes.js
 const recList = require("../../../js/list")
 Page({
+
   data: {
     rightShow: false,
     dropShow: false,
@@ -90,5 +91,6 @@ Page({
     this.setData({
       indexShow: false
     })
-  }
+  },
+  
 })
