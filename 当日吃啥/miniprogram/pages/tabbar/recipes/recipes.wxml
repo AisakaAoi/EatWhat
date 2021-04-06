@@ -1,31 +1,33 @@
 <!--pages/tabbar/recipes/recipes.wxml-->
 <view>
 
-<!-- 搜索栏功能 -->
-<view class="top_bar">
-  <!-- 搜索栏 NF: 绑定搜索、模糊搜索 -->
-  <view class="search_bar" mode="widthFix">
-    <icon class="search_icon" size="25" type="search"></icon>
-    <input placeholder-class="ph_class" type="text" confirm-type="go" placeholder="输入搜索信息" value="{{searchValue}}" />
-    <!-- 摄像头绑定拍照 -->
-    <image src="/images/vegetable/camera.png" mode="widthFix" class="camera" bindtap="onCameraOn"></image>
+  <!-- 搜索栏功能 -->
+  <view class="top_bar">
+    <!-- 搜索栏 NF: 绑定搜索、模糊搜索 -->
+    <view class="search_bar" mode="widthFix">
+      <icon class="search_icon" size="25" type="search"></icon>
+      <input placeholder-class="ph_class" type="text" confirm-type="go" placeholder="输入搜索信息" value="{{searchValue}}" />
+      <!-- 摄像头绑定拍照 -->
+      <image src="/images/vegetable/camera.png" mode="widthFix" class="camera" bindtap="onCameraOn"></image>
+    </view>
   </view>
-</view>
 
-<scroll-view scroll-y="true" style="height:{{windowHeight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <block wx:for="{{list}}" wx:key="{{item.id}}">
-    <view class="search-english" id="{{item.id}}">
-      {{item.head}}
-    </view>
-    <view class="search-car" wx:for="{{item.children}}" wx:key="{{idx}}" bindtap="showRequire" wx:for-item="child" wx:for-index="idx">
-      {{idx}}: {{child.text}}
-    </view>
-  </block>
-</scroll-view>
-<view class="index-english" style="top:{{indexTop}}px">
-  <view wx:for="{{arrId}}" wx:key="{{i}}" wx:for-item="i" id="{{i}}" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">{{i}}</view>
-</view>
-<view class="index-name" wx:if="{{indexShow}}">{{indexEnglish}}</view>
+  <scroll-view scroll-y="true" style="height:{{windowHeight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="search-english" id="{{item.id}}">
+        {{item.head}}
+      </view>
+      <view class="search-car" wx:for="{{item.children}}" wx:key="index" bindtap="showRequire" wx:for-item="child" wx:for-index="idx">
+        {{idx}}: {{child.text}}
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="index-english" style="top:{{indexTop}}px">
+    <view wx:for="{{arrId}}" wx:key="index" wx:for-item="i" id="{{i}}" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">{{i}}</view>
+  </view>
+  
+  <view class="index-name" wx:if="{{indexShow}}">{{indexEnglish}}</view>
 
 </view>
 

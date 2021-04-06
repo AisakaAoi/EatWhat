@@ -4,12 +4,12 @@ const util = require('../../../js/util')
 Page({
 
   data: {
-    search_city: '',
+    search_city: "",
     imgsrc: 100,
-    region: ['广东省', '佛山市', '南海区'],
-    weather: ['多云', '26', '℃'],
-    cloud: '',
-    temperature: '', 
+    region: ["广东省", "佛山市", "南海区"],
+    weather: ["多云", "26", "℃"],
+    cloud: "",
+    temperature: "", 
     // 用于动态数据绑定
     rec: [{
       // recommend image
@@ -21,7 +21,7 @@ Page({
       // favorite_icon
       "rc_fav": "/images/recommend/favorite.png",
       // recommend type
-      "rc_type": "午餐/晚餐/夜宵"
+      "rc_type": "午餐/晚餐/夜宵",
     },
     {
       // recommend image
@@ -33,7 +33,7 @@ Page({
       // favorite_icon
       "rc_fav": "/images/recommend/favorite.png",
       // recommend type
-      "rc_type": "午餐/晚餐/夜宵"
+      "rc_type": "午餐/晚餐/夜宵",
     },
     {
       // recommend image
@@ -45,7 +45,7 @@ Page({
       // favorite_icon
       "rc_fav": "/images/recommend/favorite.png",
       // recommend type
-      "rc_type": "午餐/晚餐/夜宵"
+      "rc_type": "午餐/晚餐/夜宵",
     },
     {
       // recommend image
@@ -57,7 +57,7 @@ Page({
       // favorite_icon
       "rc_fav": "/images/recommend/favorite.png",
       // recommend type
-      "rc_type": "午餐/晚餐/夜宵"
+      "rc_type": "午餐/晚餐/夜宵",
     },
     {
       // recommend image
@@ -69,7 +69,7 @@ Page({
       // favorite_icon
       "rc_fav": "/images/recommend/favorite.png",
       // recommend type
-      "rc_type": "午餐/晚餐/夜宵"
+      "rc_type": "午餐/晚餐/夜宵",
     }
   ]
   },
@@ -110,10 +110,10 @@ Page({
     //获取实况天气
     wx.request({
       url: 'https://free-api.heweather.net/s6/weather/now?key=' + key + '&location=' + city,
-      success: (res) => {
+      success: res => {
         if (res.data.HeWeather6[0].status == 'unknown location') {
           util.showNoneToast('抱歉！没有该城市的天气预报')
-          return;
+          return
         }
         that.setData({
           city: city,
@@ -121,16 +121,15 @@ Page({
           temperature: res.data.HeWeather6[0].now.tmp
         })
       },
-      complete: () => {
+      complete: _ => {
         wx.hideLoading()
       }
     })
   },
 
   // 绑定收藏函数
-  onFavoriteClick: function(){
+  onFavoriteClick: function () {
     console.log("Clicking Heart")
-  }
-
+  },
   
 })
