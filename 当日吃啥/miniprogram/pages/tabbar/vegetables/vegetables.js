@@ -1,6 +1,8 @@
 // pages/tabbar/recipes/recipes.js
-const vegList = require("../../../js/List")
+const vegList = require("../../../js/list")
+
 Page({
+
   data: {
     rightShow: false,
     dropShow: false,
@@ -16,7 +18,6 @@ Page({
     list: vegList.vegList,
     a: "1",
     y: 0,
-
   },
   
   onLoad: function() {
@@ -90,8 +91,6 @@ Page({
     this.setData({
       indexShow: false
     })
-  }
-
-
+  },
 
 })

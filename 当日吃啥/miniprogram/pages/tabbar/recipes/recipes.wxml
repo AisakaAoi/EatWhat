@@ -21,7 +21,7 @@
         {{item.head}}
       </view>
       <view class="search-car" wx:for="{{item.children}}" wx:key="index" bindtap="showDetail" wx:for-item="child"
-        wx:for-index="idx">
+        wx:for-index="idx" data-src ="{{child.text}}">
         {{idx}}: {{child.text}}
       </view>
     </block>
