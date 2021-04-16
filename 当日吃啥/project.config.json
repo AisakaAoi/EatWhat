@@ -55,12 +55,18 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"list": [
 				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"id": 0,
+					"name": "pages/tabbar/recommend/recommend",
+					"pathName": "pages/tabbar/recommend/recommend",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

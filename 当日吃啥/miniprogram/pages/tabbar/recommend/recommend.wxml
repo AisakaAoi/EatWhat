@@ -21,8 +21,8 @@
       </picker>
       <!-- 对应天气显示 -->
       <view class="weather-info">
-        <view class="cloud">{{cloud}}</view>
-        <view class="tem">{{temperature}}{{weather[2]}}</view>
+        <view class="cloud">{{weather[0]}}</view>
+        <view class="tem">{{weather[1]}}{{weather[2]}}</view>
       </view>
       <!-- <text class="tem">{{cloud}}{{temperature}}{{weather[2]}}</text> -->
     </view>
@@ -31,12 +31,12 @@
   <!-- 以下涉及数据绑定内容 -->
   <scroll-view scroll-y="true" style="height" style="height:{{windowHeight-50}}px;">
     <view class="recommend-context" wx:for="{{rec}}" wx:key="this">
-      <image class="rc-img" src="{{item.rc_imgurl}}" />
-      <view class="rc-des">{{item.rc_des}}</view>
-      <view class="rc-title">{{item.rc_title}}</view>
-      <view class="rc-type">{{item.rc_type}}</view>
+      <image class="rc-img" src="{{item.menu_pic}}" />
+      <view class="rc-des">{{item.menu_effect}}</view>
+      <view class="rc-title">{{item.menu_name}}</view>
+      <view class="rc-type">{{item.menu_type}}</view>
       <!-- 收藏图标 还未绑定点击及颜色变化 -->
-      <image class="rc-fav" src="{{item.rc_fav}}" mode="widthFix" bindtap="onFavoriteClick" />
+      <!-- <image class="rc-fav" src="{{item.rc_fav}}" mode="widthFix" bindtap="onFavoriteClick" /> -->
     </view>
     <view class="nomore">
       <text>没有更多啦～</text>

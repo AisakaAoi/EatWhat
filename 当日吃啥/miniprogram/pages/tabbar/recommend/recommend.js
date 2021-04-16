@@ -1,16 +1,16 @@
 // pages/tabbar/recommend/recommend.js
 const util = require('../../../js/util')
-
+const db = wx.cloud.database();
+const _ = db.command;
 Page({
 
   data: {
     search_city: '',
     imgsrc: 100,
     region: ["广东省", "佛山市", "南海区"],
-    weather: ["多云", "26", "℃"],
-    cloud: "",
-    temperature: "",
+    weather: ["", "", "℃"],
     // 用于动态数据绑定
+    /*
     rec: [{
         // recommend image
         "rc_imgurl": "/images/recommend/niurou.jpeg",
@@ -71,12 +71,12 @@ Page({
         // recommend type
         "rc_type": "午餐/晚餐/夜宵",
       }
-    ]
+    ]*/
   },
 
   onLoad: function () {
     this.setData({
-      search_city: "广州"
+      city: "广州"
     })
     this.bindRegionWeather()
     // 获取页面高度
@@ -90,7 +90,23 @@ Page({
   },
 
   onShow: function () {
-
+    let that = this
+    let temp = setInterval(() => {
+      if (that.data.weather[0] != "") {
+        db.collection("menu")
+        .where({
+          Suit_wea: that.data.weather[0],
+         })
+         .get()
+         .then(res=>{
+           console.log(res)
+           this.setData({
+             rec: res.data
+           })
+         })
+         clearInterval(temp)
+      }
+    }, 1000)
   },
 
   // 实现选择城市改变region数据
@@ -118,23 +134,28 @@ Page({
     //获取实况天气
     wx.request({
       url: 'https://free-api.heweather.net/s6/weather/now?key=' + key + '&location=' + city,
-      success: (res) => {
+      success: res => {
         if (res.data.HeWeather6[0].status == 'unknown location') {
           util.showNoneToast('抱歉！没有该城市的天气预报')
-          return;
+          return
         }
         that.setData({
           city: city,
-          cloud: res.data.HeWeather6[0].now.cond_txt,
-          temperature: res.data.HeWeather6[0].now.tmp
+          "weather[0]" : res.data.HeWeather6[0].now.cond_txt,
+          "weather[1]": res.data.HeWeather6[0].now.tmp,
         })
+        
+        console.log(res.data.HeWeather6[0].now.cond_txt)
       },
       complete: () => {
         wx.hideLoading()
       }
     })
-  },
 
+  },
+  find:function(){
+
+  },
   // 绑定收藏函数
   onFavoriteClick: function(){
     console.log("Clicking Heart")
