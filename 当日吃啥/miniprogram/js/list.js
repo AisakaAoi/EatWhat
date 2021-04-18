@@ -3,7 +3,7 @@ const recList = [{
   id: 'a',
   head: 'A',
   children: [{
-    text: '阿里巴巴',
+    text: '数据',
 
   }, {
     text: '数据',
