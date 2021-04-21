@@ -1,12 +1,12 @@
 <!--pages/tabbar/recipes/recipes.wxml-->
 <view class="scan-center">
-  <image src="/images/vegetable/dishes.png" mode="widthFix" bindtap="scanDishes()"></image>
+  <image src="/images/vegetable/dishes.png" mode="widthFix" bindtap="scanDishes"></image>
 </view>
 <view class="scan-text">
   <text>点击识别菜品</text>
 </view>
 <view class="scan-center">
-  <image src="/images/vegetable/vegetables.png" mode="widthFix" bindtap="scanVeg()"></image>
+  <image src="/images/vegetable/vegetables.png" mode="widthFix" bindtap="scanVeg"></image>
 </view>
 <view class="scan-text">
   <text>点击识别蔬菜</text>

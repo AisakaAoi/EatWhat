@@ -1,4 +1,4 @@
-// pages/tabbar/recipes/recipes.js
+// pages/tabbar/vegetables/vegetables.js
 
 Page({
 
@@ -16,11 +16,11 @@ Page({
 
   // 扫描菜品
   scanDishes: function() {
-    
+    console.log("识别菜品");
   },
 
   // 扫描蔬菜
   scanVeg: function() {
-    
+    console.log("识别蔬菜");
   }
 })
