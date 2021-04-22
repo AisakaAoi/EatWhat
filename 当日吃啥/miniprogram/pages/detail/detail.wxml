@@ -83,14 +83,8 @@
 </view>
 <view class="step-panel">
   <swiper indicator-dots="true">
-    <swiper-item class="swiper-item">
-      <text>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
-    </swiper-item>
-    <swiper-item class="swiper-item">
-      <text>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
-    </swiper-item>
-    <swiper-item class="swiper-item">
-      <text>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
+    <swiper-item wx:for="{{step}}" wx:key="this" class="swiper-item">
+      <text>{{item}}</text>
     </swiper-item>
   </swiper>
 </view>
