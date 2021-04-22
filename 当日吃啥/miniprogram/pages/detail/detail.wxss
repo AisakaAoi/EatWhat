@@ -9,6 +9,18 @@
   font-size: 40rpx;
 }
 
+.detail-img{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.detail-img image{
+  border-radius: 20rpx;
+}
+
 .title-des{
   margin-top: 20rpx;
   display: flex;
@@ -164,4 +176,16 @@ swiper{
 .swiper-item text{
   margin-right: 20rpx;
   margin-left: 20rpx;
+}
+
+.effect-panel{
+  width: 90%;
+  background: #dddddd;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+  border-radius: 15rpx;
+}
+
+.effect-item{
+  margin: 20rpx;
 }
