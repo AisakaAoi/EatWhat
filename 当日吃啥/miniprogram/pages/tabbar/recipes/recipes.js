@@ -8,15 +8,26 @@ Page({
     rightShow: false,
     dropShow: false,
     indexShow: false,
+    toView: "e",
     scrollTop: 1000,
+    indexId: "",
+    indexy: "",
+    indexEnglish: "",
     //定义索引字母数组
     arrId: recList.indexArr,
+    indexArr: recList.indexArr,
     list: recList.recList,
     a: "1",
+    y: 0,
+    // 侧边栏实现
+    filtrate: false,
+    filterData: ["素菜", "荤菜", "面食", "小吃", "粥", "汤", "甜品", "饮品", "海鲜",
+    "卤菜", "沙拉", "便当", "汉堡", "面包", "披萨"],
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     let that = this
+
     wx.getSystemInfo({
       success: res => {
         that.setData({
@@ -142,6 +153,26 @@ Page({
     } else {
       return AAA
     }
+  },
+
+  // 侧边栏显示
+  showFilter: function(){
+    this.setData({
+      filtrate: true
+    });
+    console.log(this.data.filtrate);
+  },
+
+  noneFilter: function() {
+    this.setData({
+      filtrate: false
+    });
+    console.log(this.data.filtrate);
+  },
+
+  // 获取筛选列表值
+  selectFilter: function(e) {
+    console.log(e.currentTarget.dataset.item);
   },
   
 })

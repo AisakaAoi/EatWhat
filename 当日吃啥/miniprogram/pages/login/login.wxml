@@ -2,15 +2,16 @@
 <view wx:if="{{canIUse}}">
   <view class="login-container">
     <image class="login-logo" src="/images/logo.png" mode="widthFix"></image>
-    <view class="login-title-text">今天吃啥 申请获取以下权限</view>
+    <view class="login-title-text">当日吃啥 申请获取以下权限</view>
     <view class="login-content-text">获得你的公开信息（昵称，头像等）</view>
-    <button class="login-btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">授权登录</button>
+    <button wx:if="{{canIUseGetUserProfile}}" class="login-btn" bindtap="getUserProfile"> 授权登录 </button>
+    <button wx:else class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
   </view>
 </view>
 <view wx:else>
   <view class="login-container">
     <image class="login-logo" src="/images/logo.png" mode="widthFix"></image>
-    <view class="login-title-text">今天吃啥 提醒您</view>
+    <view class="login-title-text">当日吃啥 提醒您</view>
     <view class="login-content-text">请升级微信版本</view>
   </view>
 </view>

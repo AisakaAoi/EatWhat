@@ -1,33 +1,13 @@
 <!--pages/tabbar/recipes/recipes.wxml-->
-<view>
-
-<!-- 搜索栏功能 -->
-<view class="top-bar">
-  <!-- 搜索栏 NF: 绑定搜索、模糊搜索 -->
-  <view class="search-bar" mode="widthFix">
-    <icon class="search-icon" size="25" type="search"></icon>
-    <input placeholder-class="ph-class" type="text" confirm-type="go" placeholder="输入搜索信息" value="{{searchValue}}" />
-    <!-- 摄像头绑定拍照 -->
-    <image src="/images/vegetable/camera.png" mode="widthFix" class="camera" bindtap="onCameraOn"></image>
-  </view>
+<view class="scan-center">
+  <image src="/images/vegetable/dishes.png" mode="widthFix" bindtap="scanDishes"></image>
 </view>
-
-<scroll-view scroll-y="true" style="height:{{windowHeight-50}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <block wx:for="{{list}}" wx:key="index">
-    <view class="search-english" id="{{item.id}}">
-      {{item.head}}
-    </view>
-    <view class="search-car" wx:for="{{item.children}}" wx:key="index" bindtap="showDetail" wx:for-item="child" wx:for-index="idx">
-      {{idx}}: {{child.text}}
-    </view>
-  </block>
-</scroll-view>
-
-<view class="index-english" style="top:{{indexTop}}px">
-  <view wx:for="{{arrId}}" wx:key="index" wx:for-item="i" id="{{i}}" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">{{i}}</view>
+<view class="scan-text">
+  <text>点击识别菜品</text>
 </view>
-
-<view class="index-name" wx:if="{{indexShow}}">{{indexEnglish}}</view>
-
+<view class="scan-center">
+  <image src="/images/vegetable/vegetables.png" mode="widthFix" bindtap="scanVeg"></image>
 </view>
-
+<view class="scan-text">
+  <text>点击识别蔬菜</text>
+</view>

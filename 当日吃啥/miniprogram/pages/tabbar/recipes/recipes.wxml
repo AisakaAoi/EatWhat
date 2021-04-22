@@ -8,13 +8,17 @@
         <icon class="search-icon" size="25" type="search"></icon>
         <input placeholder-class="ph-class" type="text" confirm-type="go" placeholder="输入搜索信息"
           value="{{searchValue}}" />
-        <!-- 摄像头绑定拍照 -->
-        <image src="/images/vegetable/camera.png" mode="widthFix" class="camera" bindtap="onCameraOn"></image>
+        <!-- 摄像头绑定拍照
+        <image src="/images/vegetable/camera.png" mode="widthFix" class="camera" bindtap="onCameraOn"></image> -->
+      </view>
+      <view class="filter" bindtap="showFilter">
+        <text>筛选</text>
+        <image src="/images/vegetable/filter.png" mode="widthFix" class="filter-icon"></image>
       </view>
     </view>
   </view>
 
-  <scroll-view scroll-y="true" style="height:{{windowHeight-50}}px;" scroll-into-view="{{toView}}"
+  <scroll-view scroll-y="true" style="height:{{windowHeight-40}}px;" scroll-into-view="{{toView}}"
     scroll-top="{{scrollTop}}">
     <block wx:for="{{list}}" wx:key="index">
       <view class="search-english" id="{{item.id}}">
@@ -33,5 +37,14 @@
   </view>
 
   <view class="index-name" wx:if="{{indexShow}}">{{indexEnglish}}</view>
+</view>
 
+<view class="{{filtrate? 'filtrate':''}}">
+    <view class="f-box" bindtap="noneFilter">
+    </view>
+    <view class="f-con">
+      <view class="f-item" wx:for="{{filterData}}" wx:key="this" bindtap="selectFilter" data-item="{{item}}">
+        <text>{{item}}</text>
+      </view>
+    </view>
 </view>

@@ -1,11 +1,11 @@
 // pages/tabbar/recommend/recommend.js
-const util = require('../../../js/util')
-const db = wx.cloud.database();
-const _ = db.command;
+const db = wx.cloud.database()
+const util = require("../../../js/util")
+
 Page({
 
   data: {
-    search_city: '',
+    search_city: "",
     imgsrc: 100,
     region: ["广东省", "佛山市", "南海区"],
     weather: ["", "", "℃"],
@@ -75,10 +75,6 @@ Page({
   },
 
   onLoad: function () {
-    this.setData({
-      city: "广州"
-    })
-    this.bindRegionWeather()
     // 获取页面高度
     wx.getSystemInfo({
       success: res => {
@@ -87,24 +83,22 @@ Page({
         });
       }
     })
+    this.bindRegionWeather()
   },
 
   onShow: function () {
     let that = this
     let temp = setInterval(() => {
       if (that.data.weather[0] != "") {
-        db.collection("menu")
-        .where({
+        db.collection("menu").where({
           Suit_wea: that.data.weather[0],
-         })
-         .get()
-         .then(res=>{
-           console.log(res)
-           this.setData({
-             rec: res.data
-           })
-         })
-         clearInterval(temp)
+        }).get()
+        .then(res => {
+          that.setData({
+            rec: res.data
+          })
+        })
+        clearInterval(temp)
       }
     }, 1000)
   },
@@ -122,21 +116,20 @@ Page({
     this.setData({
       search_city: this.data.region[1],
     })
-    // 此处修改天气数值 0:天气 1:气温 
     this.getWeather(this.data.search_city)
   },
 
   // 根据城市获取天气预报
   getWeather: function (city) {
     let that = this
-    let key = 'f7430b9f1d314857854a1ac3c16d2f32'
-    util.showLoading('修改天气中')
+    let key = "f7430b9f1d314857854a1ac3c16d2f32"
+    util.showLoading("修改天气中")
     //获取实况天气
     wx.request({
-      url: 'https://free-api.heweather.net/s6/weather/now?key=' + key + '&location=' + city,
+      url: "https://free-api.heweather.net/s6/weather/now?key=" + key + "&location=" + city,
       success: res => {
-        if (res.data.HeWeather6[0].status == 'unknown location') {
-          util.showNoneToast('抱歉！没有该城市的天气预报')
+        if (res.data.HeWeather6[0].status == "unknown location") {
+          util.showNoneToast("抱歉！没有该城市的天气预报")
           return
         }
         that.setData({
@@ -144,18 +137,17 @@ Page({
           "weather[0]" : res.data.HeWeather6[0].now.cond_txt,
           "weather[1]": res.data.HeWeather6[0].now.tmp,
         })
-        
-        console.log(res.data.HeWeather6[0].now.cond_txt)
       },
-      complete: () => {
+      complete: _ => {
         wx.hideLoading()
       }
     })
+  },
+
+  find: function() {
 
   },
-  find:function(){
 
-  },
   // 绑定收藏函数
   onFavoriteClick: function(){
     console.log("Clicking Heart")
