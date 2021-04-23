@@ -4,6 +4,9 @@
     <view class="title-name">
       <text>{{detailName}}</text>
     </view>
+    <view class="detail-img">
+      <image src="{{menu_pic}}" mode="widthFix"></image>
+    </view>
     <view class="title-des">
       <image src="/images/details/time.png" mode="widthFix"></image>
       <text>适合天气</text>
@@ -24,7 +27,7 @@
   <view class="list-title">
     <text> 用料</text>
     <text style="margin-left:10rpx; font-size:20rpx; margin-top: 10rpx; color: #777777">{{numOf}}人份</text>
-    <view class="list-add" style="position: absolute; left: 575rpx; top: 240rpx">
+    <view class="list-add">
       <view bindtap="numRed">-</view>
       <view bindtap="numAdd">+</view>
     </view>
@@ -37,23 +40,43 @@
         <view class="item-right">{{item.Ingredients}}克</view>
       </view>
       <view class="divLine-below"></view>
-      <!-- 循环看效果而已 -->
-      <view class="list-item">
-        <view class="item-left">{{item.material}}</view>
-        <view class="item-right">{{item.quantity}}{{item.unit}}</view>
-      </view>
-      <view class="divLine-below"></view>
-      <view class="list-item">
-        <view class="item-left">{{item.material}}</view>
-        <view class="item-right">{{item.quantity}}{{item.unit}}</view>
-      </view>
-      <view class="divLine-below"></view>
     </view>
   </view>
 </view>
 
 <view class="analysis-panel">
-  <view >效果：{{menu_effect}}</view>
+  <view class="panel-row">
+    <view class="panel-item">
+      <image src="/images/details/calorie.png" class="panel-icon" mode="widthFix"></image>
+      <text>卡路里</text>
+      <text>--</text>
+    </view>
+    <view class="panel-item">
+      <image src="/images/details/protein.png" class="panel-icon" mode="widthFix"></image>
+      <text>蛋白质</text>
+      <text>--</text>
+    </view>
+  </view>
+  <view class="panel-row">
+    <view class="panel-item">
+      <image src="/images/details/carbon.png" class="panel-icon" mode="widthFix"></image>
+      <text>碳水化物</text>
+      <text>--</text>
+    </view>
+    <view class="panel-item">
+      <image src="/images/details/fat.png" class="panel-icon" mode="widthFix"></image>
+      <text>脂肪</text>
+      <text>--</text>
+    </view>
+  </view>
+</view>
+<view class="step">
+  功效
+</view>
+<view class="effect-panel">
+  <view class="effect-item">
+    {{menu_effect}}
+  </view>
 </view>
 <view class="step">
   步骤

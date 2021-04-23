@@ -16,14 +16,6 @@ Page({
     a: "1",
     
   },
-  
-  onLoad: function() {
-
-  },
-
-  onShow: function () {
-
-  },
     // 扫描菜品
   scanDishes: function () {
     let that = this
@@ -119,21 +111,6 @@ Page({
       }
     })
   },
-  jump:function(){
-    console.log("sss")
-    wx.switchTab({
-     url: '../recipes/recipes.wxml',
-     success: function(res) {
-  
-     },
-     fail: function(res) {
-  
-     },
-     complete: function(res) {
-  
-     },
-    })
-   },
   
   getResult1: function (token, imgB64) {
     wx.request({
@@ -152,13 +129,4 @@ Page({
       }
     })
   },
-
-  // lx看这里，showDetail绑定对应数据
-  showDetail: function (e) {
-    // console.log(e.target.dataset.src)
-  }
-
-  // 扫描菜品
-  // 扫描蔬菜
-
 })
