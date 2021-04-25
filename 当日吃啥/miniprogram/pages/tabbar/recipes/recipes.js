@@ -25,8 +25,9 @@ Page({
     "卤菜", "沙拉", "便当", "汉堡", "面包", "披萨"],
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     let that = this
+
     wx.getSystemInfo({
       success: res => {
         that.setData({

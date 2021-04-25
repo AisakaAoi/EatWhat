@@ -1,11 +1,15 @@
 // pages/detail/detail.js
+const db = wx.cloud.database();
+const _ = db.command;
 Page({
 
   data: {
-    detailName: "鸡蛋腐竹蘑菇锅",
-    time: "约20～30分钟",
-    difficulty: "零厨艺",
+    detailName: "",
+    Suit_wea: "约20～30分钟",
+    type: "",
+    menu_effect:"",
     numOf: 3,
+    step:[],
     listData: [{
       "material": "腐竹（泡发）",
       "quantity": 250,
@@ -27,18 +31,46 @@ Page({
       "unit": "根"
     }
   ],
-    step: [
-      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-    ],
-    effect: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+    
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
+    var queryBean = JSON.parse(options.queryBean);
+    // console.log(queryBean)
+    // queryBean = "麻婆豆腐"
+    console.log(queryBean)
+    
+    //查找菜谱
+    db.collection("menu")
+    .where({
+      menu_name: queryBean
+    })
+    .get()
+    .then(res=>{
+      console.log(res.data[0])
+      this.setData({
+        detailName:res.data[0].menu_name,
+        type:res.data[0].menu_type,
+        step:res.data[0].menu_step,
+        menu_effect : res.data[0].menu_effect,
+        Suit_wea:res.data[0].Suit_wea,
+        // cfList:res.data
+      })
+    }),
+
+    //查找材料
+    db.collection("veg")
+    .where({
+      menu_name: queryBean
+    })
+    .get()
+    .then(res=>{
+      console.log(res.data)
+      this.setData({
+        listData:res.data,
+        // cfList:res.data
+      })
+    })
 
   },
 
