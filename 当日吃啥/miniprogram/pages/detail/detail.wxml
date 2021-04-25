@@ -9,11 +9,11 @@
     </view>
     <view class="title-des">
       <image src="/images/details/time.png" mode="widthFix"></image>
-      <text>适合天气</text>
-      <text>{{Suit_wea}}</text>
+      <text>时间</text>
+      <text>{{time}}</text>
       <image style="margin-left: 50rpx" src="/images/details/diff.png" mode="widthFix"></image>
-      <text>类型</text>
-      <text>{{type}}</text>
+      <text>难度</text>
+      <text>{{difficulty}}</text>
     </view>
     <view class="title-favorite">
       <image src="/images/details/favorite.png" mode="widthFix"></image>
