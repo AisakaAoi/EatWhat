@@ -136,6 +136,11 @@ page{
   font-size: 30rpx;
   color: white;
   text-shadow: 3rpx 3rpx black;
+  display: inline-block;
+  white-space: nowrap; 
+  width: 90%; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .rc-fav{

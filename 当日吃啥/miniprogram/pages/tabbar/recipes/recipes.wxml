@@ -39,12 +39,11 @@
   <view class="index-name" wx:if="{{indexShow}}">{{indexEnglish}}</view>
 </view>
 
-<view class="{{filtrate? 'filtrate':''}}">
-    <view class="f-box" bindtap="noneFilter">
+<view class="{{filtrate ? 'filtrate':''}}">
+  <view class="f-box" bindtap="noneFilter"></view>
+  <view class="f-con">
+    <view class="f-item" wx:for="{{filterData}}" wx:key="this" bindtap="selectFilter" data-item="{{item}}">
+      <text>{{item}}</text>
     </view>
-    <view class="f-con">
-      <view class="f-item" wx:for="{{filterData}}" wx:key="this" bindtap="selectFilter" data-item="{{item}}">
-        <text>{{item}}</text>
-      </view>
-    </view>
+  </view>
 </view>

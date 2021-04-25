@@ -9,69 +9,6 @@ Page({
     imgsrc: 100,
     region: ["广东省", "佛山市", "南海区"],
     weather: ["", "", "℃"],
-    // 用于动态数据绑定
-    /*
-    rec: [{
-        // recommend image
-        "rc_imgurl": "/images/recommend/niurou.jpeg",
-        // recommend description
-        "rc_des": "米其林级别～",
-        // recommend title
-        "rc_title": "牛肉丸汤粉",
-        // favorite_icon
-        "rc_fav": "/images/recommend/favorite.png",
-        // recommend type
-        "rc_type": "午餐/晚餐/夜宵",
-      },
-      {
-        // recommend image
-        "rc_imgurl": "/images/recommend/niurou.jpeg",
-        // recommend description
-        "rc_des": "米其林级别",
-        // recommend title
-        "rc_title": "牛肉丸汤粉",
-        // favorite_icon
-        "rc_fav": "/images/recommend/favorite.png",
-        // recommend type
-        "rc_type": "午餐/晚餐/夜宵",
-      },
-      {
-        // recommend image
-        "rc_imgurl": "/images/recommend/niurou.jpeg",
-        // recommend description
-        "rc_des": "米其林级别",
-        // recommend title
-        "rc_title": "牛肉丸汤粉",
-        // favorite_icon
-        "rc_fav": "/images/recommend/favorite.png",
-        // recommend type
-        "rc_type": "午餐/晚餐/夜宵",
-      },
-      {
-        // recommend image
-        "rc_imgurl": "/images/recommend/niurou.jpeg",
-        // recommend description
-        "rc_des": "米其林级别",
-        // recommend title
-        "rc_title": "牛肉丸汤粉",
-        // favorite_icon
-        "rc_fav": "/images/recommend/favorite.png",
-        // recommend type
-        "rc_type": "午餐/晚餐/夜宵",
-      },
-      {
-        // recommend image
-        "rc_imgurl": "/images/recommend/niurou.jpeg",
-        // recommend description
-        "rc_des": "米其林级别",
-        // recommend title
-        "rc_title": "牛肉丸汤粉",
-        // favorite_icon
-        "rc_fav": "/images/recommend/favorite.png",
-        // recommend type
-        "rc_type": "午餐/晚餐/夜宵",
-      }
-    ]*/
   },
 
   onLoad: function () {
@@ -79,10 +16,11 @@ Page({
     wx.getSystemInfo({
       success: res => {
         this.setData({
-          windowHeight: res.windowHeight
-        });
+          windowHeight: res.windowHeight,
+        })
       }
     })
+    // 读取天气
     this.bindRegionWeather()
   },
 
@@ -90,12 +28,17 @@ Page({
     let that = this
     let temp = setInterval(() => {
       if (that.data.weather[0] != "") {
-        db.collection("menu").where({
-          Suit_wea: that.data.weather[0],
-        }).get()
+        db.collection("menu")
+        // .where({
+        //   Suit_wea: that.data.weather[0],
+        // })
+        .get()
         .then(res => {
+          let temp = res.data
+          // 洗牌
+          temp = util.shuffle(temp)
           that.setData({
-            rec: res.data
+            rec: temp
           })
         })
         clearInterval(temp)
@@ -108,6 +51,7 @@ Page({
     this.setData({
       region: e.detail.value,
     })
+    // 读取天气
     this.bindRegionWeather()
   },
 
@@ -116,6 +60,7 @@ Page({
     this.setData({
       search_city: this.data.region[1],
     })
+    // 调用天气api
     this.getWeather(this.data.search_city)
   },
 
@@ -142,7 +87,7 @@ Page({
         wx.hideLoading()
       }
     }),
-    this.onShow();
+    this.onShow()
   },
 
   find: function() {

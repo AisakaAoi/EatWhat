@@ -9,44 +9,19 @@ Page({
     type: "",
     menu_effect:"",
     numOf: 3,
-    step:[],
-    listData: [{
-      "material": "腐竹（泡发）",
-      "quantity": 250,
-      "unit": "g"
-    },
-    {
-      "material": "鸡蛋",
-      "quantity": 2,
-      "unit": "个"
-    },
-    {
-      "material": "白玉菇",
-      "quantity": 100,
-      "unit": "g"
-    },
-    {
-      "material": "小葱",
-      "quantity": 2,
-      "unit": "根"
-    }
-  ],
-    
+    step: [],
+    listData: [],
   },
 
   onLoad: function (options) {
-    var queryBean = JSON.parse(options.queryBean);
-    // console.log(queryBean)
-    // queryBean = "麻婆豆腐"
+    let queryBean = JSON.parse(options.queryBean);
     console.log(queryBean)
     
     //查找菜谱
-    db.collection("menu")
-    .where({
-      menu_name: queryBean
-    })
-    .get()
-    .then(res=>{
+    db.collection("menu").where({
+      menu_name: queryBean,
+    }).get()
+    .then(res => {
       console.log(res.data[0])
       this.setData({
         detailName:res.data[0].menu_name,
@@ -60,37 +35,34 @@ Page({
     }),
 
     //查找材料
-    db.collection("veg")
-    .where({
-      menu_name: queryBean
-    })
-    .get()
-    .then(res=>{
+    db.collection("veg").where({
+      menu_name: queryBean,
+    }).get()
+    .then(res => {
       console.log(res.data)
       this.setData({
         listData:res.data,
-        // cfList:res.data
+        // cfList:res.data,
       })
     })
-
   },
 
   onShow: function () {
 
   },
 
-  numAdd: function(){
-    let num = this.data.numOf;
+  numAdd: function () {
+    let num = this.data.numOf
     this.setData({
-      numOf: num+1
+      numOf: num + 1,
     })
     console.log(this.data.numOf)
   },
 
-  numRed: function() {
-    let num = this.data.numOf;
+  numRed: function () {
+    let num = this.data.numOf
     this.setData({
-      numOf: num-1
+      numOf: num - 1,
     })
     console.log(this.data.numOf)
   },

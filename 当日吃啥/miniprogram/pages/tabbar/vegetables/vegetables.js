@@ -1,5 +1,4 @@
 // pages/tabbar/vegetables/vegetables.js
-// pages/tabbar/recipes/recipes.js
 const recList = require("../../../js/list")
 const util = require("../../../js/util")
 
@@ -14,13 +13,20 @@ Page({
     arrId: recList.indexArr,
     list: recList.recList,
     a: "1",
+  },
+
+  onLoad: function () {
     
   },
-    // 扫描菜品
+
+  onShow: function () {
+    
+  },
+
+  // 扫描菜品
   scanDishes: function () {
     let that = this
     new Promise((resolve, reject) => {
-      // chooseImg
       wx.chooseImage({
         count: 1,
         sizeType: ["original", "compressed"],
@@ -39,15 +45,15 @@ Page({
     .then(imgB64 => {
       util.showLoading("识别中")
       that.getToken(function (token) {
-        that.getResult(token, imgB64)
+        that.getDishesResult(token, imgB64)
       })
     })
   },
-    // 扫描蔬菜
+
+  // 扫描蔬菜
   scanVeg: function () {
     let that = this
     new Promise((resolve, reject) => {
-      // chooseImg
       wx.chooseImage({
         count: 1,
         sizeType: ["original", "compressed"],
@@ -66,15 +72,15 @@ Page({
     .then(imgB64 => {
       util.showLoading("识别中")
       that.getToken(function (token) {
-        that.getResult1(token, imgB64)
+        that.getVegResult(token, imgB64)
       })
     })
   },
 
   getToken: function (callback) {
-    var apiKey = "C9RTmGyhYhTZfkU2ZNcNEf3Q"
-    var secKey = "znIPcjmI9XF16vkUksqfcGGjbqhfMj4f"
-    var tokenUrl = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=" + apiKey + "&client_secret=" + secKey
+    let apiKey = "C9RTmGyhYhTZfkU2ZNcNEf3Q"
+    let secKey = "znIPcjmI9XF16vkUksqfcGGjbqhfMj4f"
+    let tokenUrl = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=" + apiKey + "&client_secret=" + secKey
     wx.request({
       url: tokenUrl,        
       data: {},
@@ -88,10 +94,9 @@ Page({
     })
   },
 
-  getResult: function (token, imgB64) {
+  getDishesResult: function (token, imgB64) {
     wx.request({
       url: "https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=" + token,                      //菜品识别
-      // url: "https://aip.baidubce.com/rest/2.0/image-classify/v1/classify/ingredient?access_token=" + token,    //蔬菜识别
       method: "post",
       data: {
         image: imgB64,
@@ -102,19 +107,17 @@ Page({
       success: res => {
         wx.hideLoading()
         console.log(res.data.result[0].name)
-        var queryBean = JSON.stringify(res.data.result[0].name)
-        console.log(queryBean+"ssss")
+        let queryBean = JSON.stringify(res.data.result[0].name)
+        console.log(queryBean + "ssss")
         wx.navigateTo({
-          url: '../../detail/detail?queryBean='+queryBean,
+          url: "../../detail/detail?queryBean=" + queryBean,
         })
-
       }
     })
   },
   
-  getResult1: function (token, imgB64) {
+  getVegResult: function (token, imgB64) {
     wx.request({
-      // url: "https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=" + token,                      //菜品识别
       url: "https://aip.baidubce.com/rest/2.0/image-classify/v1/classify/ingredient?access_token=" + token,    //蔬菜识别
       method: "post",
       data: {

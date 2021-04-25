@@ -44,12 +44,11 @@ Page({
   
   // lx看这里，showDetail绑定对应数据
   showDetail: function (e) {
-    
     console.log(e.target.dataset.src)
-    var queryBean = JSON.stringify(e.target.dataset.src)
+    let queryBean = JSON.stringify(e.target.dataset.src)
     console.log(queryBean+"aaa")
     wx.navigateTo({
-      url: '../../detail/detail?queryBean='+queryBean,
+      url: "../../detail/detail?queryBean=" + queryBean,
     })
   },
 
@@ -100,24 +99,26 @@ Page({
   },
 
   // 侧边栏显示
-  showFilter: function(){
+  showFilter: function () {
     this.setData({
-      filtrate: true
-    });
-    console.log(this.data.filtrate);
+      filtrate: true,
+    })
+    console.log(this.data.filtrate)
   },
 
-  noneFilter: function() {
+  noneFilter: function () {
     this.setData({
-      filtrate: false
-    });
-    console.log(this.data.filtrate);
+      filtrate: false,
+    })
+    console.log(this.data.filtrate)
   },
 
   // 获取筛选列表值
-  selectFilter: function(e) {
-    console.log(e.currentTarget.dataset.item);
-    queryBea
+  selectFilter: function (e) {
+    this.setData({
+      filtrate: false,
+    })
+    console.log(e.currentTarget.dataset.item)
   },
   
 })

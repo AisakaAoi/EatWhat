@@ -37,7 +37,7 @@
     <view wx:for="{{listData}}" wx:key="this">
       <view class="list-item">
         <view class="item-left">{{item.veg_name}}</view>
-        <view class="item-right">{{item.Ingredients}}克</view>
+        <view class="item-right">{{item.Ingredients * numOf}}克</view>
       </view>
       <view class="divLine-below"></view>
     </view>
