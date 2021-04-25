@@ -5,7 +5,7 @@
       <text>{{detailName}}</text>
     </view>
     <view class="detail-img">
-      <image src="/images/recommend/niurou.jpeg" mode="widthFix"></image>
+      <image src="{{menu_pic}}" mode="widthFix"></image>
     </view>
     <view class="title-des">
       <image src="/images/details/time.png" mode="widthFix"></image>
@@ -36,8 +36,8 @@
   <view class="list">
     <view wx:for="{{listData}}" wx:key="this">
       <view class="list-item">
-        <view class="item-left">{{item.material}}</view>
-        <view class="item-right">{{item.quantity}}{{item.unit}}</view>
+        <view class="item-left">{{item.veg_name}}</view>
+        <view class="item-right">{{item.Ingredients}}克</view>
       </view>
       <view class="divLine-below"></view>
     </view>
@@ -75,7 +75,7 @@
 </view>
 <view class="effect-panel">
   <view class="effect-item">
-    {{effect}}
+    {{menu_effect}}
   </view>
 </view>
 <view class="step">

@@ -41,7 +41,6 @@
     <view class="nomore">
       <text>没有更多啦～</text>
     </view>
-    <navigator url="/pages/detail/detail">跳转到新页面</navigator>
   </scroll-view>
 
   

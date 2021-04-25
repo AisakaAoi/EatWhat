@@ -54,6 +54,7 @@ Page({
         step:res.data[0].menu_step,
         menu_effect : res.data[0].menu_effect,
         Suit_wea:res.data[0].Suit_wea,
+        menu_pic:res.data[0].menu_pic,
         // cfList:res.data
       })
     }),

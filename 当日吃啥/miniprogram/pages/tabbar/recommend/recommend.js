@@ -141,7 +141,8 @@ Page({
       complete: _ => {
         wx.hideLoading()
       }
-    })
+    }),
+    this.onShow();
   },
 
   find: function() {
