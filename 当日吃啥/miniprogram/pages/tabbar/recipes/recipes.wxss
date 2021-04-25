@@ -14,7 +14,7 @@ page {
 
 .search-bar {
   background-color: white;
-  width: 100%;
+  width: 80%;
   border: 1px solid #d0d0d0;
   border-radius: 50rpx;
   margin-left: 30rpx;
@@ -47,11 +47,31 @@ page {
   position: absolute;
   right: 0;
   top: 20rpx;
-  margin-right: 60rpx;
+  margin-right: 140rpx;
   z-index: 0;
 }
 
-/* pages/search/search.wxss */
+.filter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+}
+
+.filter-icon{
+  width: 35rpx;
+  position: absolute;
+  right: 10rpx;
+  margin-top: 3rpx;
+}
+
+.filter text{
+  color: #e6e6e6;
+  position: absolute;
+  right: 50rpx;
+  font-size: 28rpx;
+}
+
 .search-car {
   height: 80rpx;
   line-height: 80rpx;
@@ -97,4 +117,40 @@ scroll-view {
   font-size: 48px;
   background-color: rgba(0, 0, 0, 0.4);
   line-height: 100px;
+}
+
+.filtrate {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+}
+
+.filtrate .f-box {
+  width: 60%;
+  background: #333;
+  opacity: 0.3;
+}
+
+.filtrate .f-con {
+  width: 40%;
+  background: white;
+  overflow: auto;
+}
+
+.filtrate .f-item{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.filtrate .f-item text{
+  color: #363636;
+  font-size: large;
 }

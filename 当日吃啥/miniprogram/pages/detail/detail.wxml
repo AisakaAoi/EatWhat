@@ -1,2 +1,90 @@
 <!--pages/detail/detail.wxml-->
+<view>
+  <view class="detail-title">
+    <view class="title-name">
+      <text>{{detailName}}</text>
+    </view>
+    <view class="detail-img">
+      <image src="/images/recommend/niurou.jpeg" mode="widthFix"></image>
+    </view>
+    <view class="title-des">
+      <image src="/images/details/time.png" mode="widthFix"></image>
+      <text>时间</text>
+      <text>{{time}}</text>
+      <image style="margin-left: 50rpx" src="/images/details/diff.png" mode="widthFix"></image>
+      <text>难度</text>
+      <text>{{difficulty}}</text>
+    </view>
+    <view class="title-favorite">
+      <image src="/images/details/favorite.png" mode="widthFix"></image>
+      <text>收藏</text>
+    </view>
+    <view class="divLine"></view>
+  </view>
+</view>
 
+<view class=detail-list">
+  <view class="list-title">
+    <text> 用料</text>
+    <text style="margin-left:10rpx; font-size:20rpx; margin-top: 10rpx; color: #777777">{{numOf}}人份</text>
+    <view class="list-add">
+      <view bindtap="numRed">-</view>
+      <view bindtap="numAdd">+</view>
+    </view>
+  </view>
+
+  <view class="list">
+    <view wx:for="{{listData}}" wx:key="this">
+      <view class="list-item">
+        <view class="item-left">{{item.material}}</view>
+        <view class="item-right">{{item.quantity}}{{item.unit}}</view>
+      </view>
+      <view class="divLine-below"></view>
+    </view>
+  </view>
+</view>
+
+<view class="analysis-panel">
+  <view class="panel-row">
+    <view class="panel-item">
+      <image src="/images/details/calorie.png" class="panel-icon" mode="widthFix"></image>
+      <text>卡路里</text>
+      <text>--</text>
+    </view>
+    <view class="panel-item">
+      <image src="/images/details/protein.png" class="panel-icon" mode="widthFix"></image>
+      <text>蛋白质</text>
+      <text>--</text>
+    </view>
+  </view>
+  <view class="panel-row">
+    <view class="panel-item">
+      <image src="/images/details/carbon.png" class="panel-icon" mode="widthFix"></image>
+      <text>碳水化物</text>
+      <text>--</text>
+    </view>
+    <view class="panel-item">
+      <image src="/images/details/fat.png" class="panel-icon" mode="widthFix"></image>
+      <text>脂肪</text>
+      <text>--</text>
+    </view>
+  </view>
+</view>
+<view class="step">
+  功效
+</view>
+<view class="effect-panel">
+  <view class="effect-item">
+    {{effect}}
+  </view>
+</view>
+<view class="step">
+  步骤
+</view>
+<view class="step-panel">
+  <swiper indicator-dots="true">
+    <swiper-item wx:for="{{step}}" wx:key="this" class="swiper-item">
+      <text>{{item}}</text>
+    </swiper-item>
+  </swiper>
+</view>
