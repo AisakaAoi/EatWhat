@@ -31,7 +31,7 @@
   <!-- 以下涉及数据绑定内容 -->
   <scroll-view scroll-y="true" style="height" style="height:{{windowHeight-50}}px;">
     <view class="recommend-context" wx:for="{{rec}}" wx:key="this">
-      <image class="rc-img" src="{{item.menu_pic}}" />
+      <image class="rc-img" src="{{item.menu_pic}}" bindtap="find" data-src ="{{item.menu_name}}" />
       <view class="rc-des">{{item.menu_effect}}</view>
       <view class="rc-title">{{item.menu_name}}</view>
       <view class="rc-type">{{item.menu_type}}</view>

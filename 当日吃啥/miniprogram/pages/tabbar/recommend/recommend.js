@@ -20,6 +20,25 @@ Page({
         })
       }
     })
+
+    // // 获取当地地点
+    // wx.getSetting({
+    //   success: res => {
+    //     // 初始化或者已经授权过了（初始化时，调用getLocation会自动弹框询问）
+    //     // if (res.authSetting["scope.userLocation"] !== false) {
+    //       //调用wx.getLocation的API
+    //       // that.getLocationRequest()
+    //     // }
+    //     // 读取天气
+    //     let temp = setInterval(() => {
+    //       if (that.data.region[0] != "") {
+            
+    //         clearInterval(temp)
+    //       }
+    //     }, 1000)
+    //   }
+    // })
+
     // 读取天气
     this.bindRegionWeather()
   },
@@ -34,16 +53,61 @@ Page({
         // })
         .get()
         .then(res => {
-          let temp = res.data
+          let data = res.data
           // 洗牌
-          temp = util.shuffle(temp)
+          data = util.shuffle(data)
           that.setData({
-            rec: temp
+            rec: data
           })
         })
         clearInterval(temp)
       }
     }, 1000)
+  },
+
+  getLocationRequest: function () {
+    let that = this
+    wx.getLocation({
+      type: "wgs84",
+      success: res => {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        that.getLocal(latitude, longitude)
+      },
+      fail: res => {
+        console.log("fail" + JSON.stringify(res))
+      }
+    })
+  },
+
+  getLocal: function (latitude, longitude) {
+    let that = this
+    wx.request({     
+      url: "http://api.map.baidu.com/reverse_geocoding/v3/?ak=mEUqB6cTeu9CsjDGt0CrPcdYKPAeWKUh&output=json&coordtype=gcj02&location=" + latitude + "," + longitude,
+      data: {},
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: ops => {
+        console.log("定位城市：", ops.data.result.addressComponent.province)
+        console.log("定位城市：", ops.data.result.addressComponent.city)
+        console.log("定位城市：", ops.data.result.addressComponent.district)
+        that.setData({
+          "region[0]": ops.data.result.addressComponent.province,
+          "region[1]": ops.data.result.addressComponent.city,
+          "region[2]": ops.data.result.addressComponent.district,
+        })
+      },
+      fail: _ => {
+        console.log(_)
+        wx.showModal({
+          title: "信息提示",
+          content: "请求失败",
+          showCancel: false,
+          confirmColor: "#f37938",
+        })
+      }
+    })
   },
 
   // 实现选择城市改变region数据
@@ -90,8 +154,12 @@ Page({
     this.onShow()
   },
 
-  find: function() {
-
+  find: function(e) {
+    console.log(e.target.dataset.src)
+    let queryBean = JSON.stringify(e.target.dataset.src)
+    wx.navigateTo({
+      url: "../../detail/detail?queryBean=" + queryBean,
+    })
   },
 
   // 绑定收藏函数

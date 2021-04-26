@@ -43,6 +43,11 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于今天吃啥小程序定位获取^_^"
+    }
+  },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }

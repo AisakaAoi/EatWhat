@@ -29,7 +29,10 @@ Page({
         // 保存授权的用户信息
         wx.setStorageSync("userInfo", res.userInfo)
         // 返回上一页
-        wx.navigateBack()
+        // wx.navigateBack()
+        wx.switchTab({
+          url: "../tabbar/recommend/recommend",
+        })
       },
       fail: _ => {
         // 用户按了拒绝按钮
