@@ -7,11 +7,12 @@ Page({
   data: {
     search_city: "",
     imgsrc: 100,
-    region: ["广东省", "佛山市", "南海区"],
+    region: ["", "", ""],
     weather: ["", "", "℃"],
   },
 
   onLoad: function () {
+    let that = this
     // 获取页面高度
     wx.getSystemInfo({
       success: res => {
@@ -21,30 +22,27 @@ Page({
       }
     })
 
-    // // 获取当地地点
-    // wx.getSetting({
-    //   success: res => {
-    //     // 初始化或者已经授权过了（初始化时，调用getLocation会自动弹框询问）
-    //     // if (res.authSetting["scope.userLocation"] !== false) {
-    //       //调用wx.getLocation的API
-    //       // that.getLocationRequest()
-    //     // }
-    //     // 读取天气
-    //     let temp = setInterval(() => {
-    //       if (that.data.region[0] != "") {
-            
-    //         clearInterval(temp)
-    //       }
-    //     }, 1000)
-    //   }
-    // })
+    // 获取当地地点
+    wx.getSetting({
+      success: res => {
+        // 初始化或者已经授权过了（初始化时，调用getLocation会自动弹框询问）
+        if (res.authSetting["scope.userLocation"] !== false) {
+          // 调用wx.getLocation的API
+          that.getLocationRequest()
+        }
+        // 读取天气
+        let temp = setInterval(() => {
+          if (that.data.region[0] != "") {
+            this.bindRegionWeather()
+            clearInterval(temp)
+          }
+        }, 1000)
+      }
+    })
 
     // 读取天气
-    this.bindRegionWeather()
-  },
+    // this.bindRegionWeather()
 
-  onShow: function () {
-    let that = this
     let temp = setInterval(() => {
       if (that.data.weather[0] != "") {
         db.collection("menu")
@@ -63,6 +61,10 @@ Page({
         clearInterval(temp)
       }
     }, 1000)
+  },
+
+  onShow: function () {
+    
   },
 
   getLocationRequest: function () {
@@ -146,12 +148,17 @@ Page({
           "weather[0]" : res.data.HeWeather6[0].now.cond_txt,
           "weather[1]": res.data.HeWeather6[0].now.tmp,
         })
+
+        // 暂时的刷新推荐页面
+        that.setData({
+          rec: util.shuffle(that.data.rec),
+        })
+
       },
       complete: _ => {
         wx.hideLoading()
       }
-    }),
-    this.onShow()
+    })
   },
 
   find: function(e) {

@@ -17,7 +17,7 @@
   </button> 
 
   <!-- 意见反馈 bindtap 绑定前往意见页面 -->
-  <button class="list-item" bindtap="toAdvice">
+  <button class="list-item" open-type="feedback">
     <image class="item-image" src="{{orderItems[1].imageurl}}" mode="widthFix"></image>
     <view class="item-text">{{orderItems[1].name}}</view>
     <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>

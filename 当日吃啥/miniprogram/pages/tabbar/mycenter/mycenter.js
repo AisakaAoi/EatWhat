@@ -16,7 +16,7 @@ Page({
       },
       {
         id: 2,
-        name: "关于我们",
+        name: "使用帮助",
         imageurl: "/images/mycenter/help.png"
       },
       {
@@ -39,16 +39,12 @@ Page({
     
   },
 
-  toAdvice: function () {
-
-  },
-
   toHelp: function () {
 
   },
 
   toAboutUs: function () {
 
-  }
+  },
 
 })
