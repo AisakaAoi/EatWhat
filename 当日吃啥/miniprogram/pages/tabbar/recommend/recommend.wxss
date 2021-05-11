@@ -49,6 +49,8 @@ page{
 }
 
 .pos{
+  width: 120rpx;
+  height: 40rpx;
   font-size: 30rpx;
   margin-right: 10rpx;
   overflow: hidden;
@@ -64,14 +66,12 @@ page{
 
 .tem{
   font-size: 25rpx;
-  color: #dfdfdf;
   justify-content: right;
   margin-right: 10rpx;
 }
 
 .cloud{
   font-size: 25rpx;
-  color: #dfdfdf;
 }
 
 .arrow-down{
@@ -95,16 +95,19 @@ page{
 }
 
 .recommend-context{
-  margin-top: 30rpx;
-  margin-left: 25rpx;
-  margin-right: 25rpx;
+  display: flex;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  height: 600rpx;
   position: relative;
 }
 
 .rc-img{
   border-radius: 40rpx;
   width: 100%;
-  height: 650rpx;
+  height: 100%;
+  object-fit: cover;
 }
 
 .rc-title{
@@ -120,7 +123,7 @@ page{
 .rc-type{
   position: absolute;
   margin-right: 30rpx;
-  top: 550rpx;
+  top: 520rpx;
   right: 0;
   bottom: 0;
   text-align: right;
@@ -146,7 +149,7 @@ page{
 .rc-fav{
   position: absolute;
   width: 60rpx;
-  top: 550rpx;
+  top: 520rpx;
   left: 50rpx;
 }
 

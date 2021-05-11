@@ -45,6 +45,12 @@
         {
           "name": "pages/tabbar/recommend/recommend",
           "pathName": "pages/tabbar/recommend/recommend",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/favorite/favorite",
+          "pathName": "pages/favorite/favorite",
           "scene": null
         }
       ]

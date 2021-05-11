@@ -1,0 +1,13 @@
+<!--pages/favorite/favorite.wxml-->
+<scroll-view scroll-y="true">
+  <!-- 需要判断是否有收藏 -->
+  <!-- <text>暂无收藏～</text> -->
+    <view class="fav-item">
+      <image src="/images/recommend/niurou.jpeg" mode="aspectFill"></image>
+      <view class="fav-title">
+        牛肉丸汤粉
+      </view>
+    </view>
+    <view class="divLine-below"></view>
+</scroll-view>
+

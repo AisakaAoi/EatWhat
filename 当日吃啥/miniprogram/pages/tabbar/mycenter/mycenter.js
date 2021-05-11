@@ -36,7 +36,9 @@ Page({
   },
 
   toFavorite: function () {
-    
+    wx.navigateTo({
+      url: '../../favorite/favorite',
+    })
   },
 
   toHelp: function () {

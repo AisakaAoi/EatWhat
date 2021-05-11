@@ -1,0 +1,27 @@
+/* pages/favorite/favorite.wxss */
+.fav-item{
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+  height: 200rpx;
+  display: flex;
+}
+
+.fav-item image{
+  width: 250rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+
+.fav-title{
+  font-size: 40rpx;
+  margin-left: 10rpx;
+}
+
+.divLine-below{
+  width: auto;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  border-top: 1rpx solid #c5c5c5;
+}

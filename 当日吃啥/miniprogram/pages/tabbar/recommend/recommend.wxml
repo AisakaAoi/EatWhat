@@ -31,12 +31,12 @@
   <!-- 以下涉及数据绑定内容 -->
   <scroll-view scroll-y="true" style="height" style="height:{{windowHeight-50}}px;">
     <view class="recommend-context" wx:for="{{rec}}" wx:key="this">
-      <image class="rc-img" src="{{item.menu_pic}}" bindtap="find" data-src ="{{item.menu_name}}" />
+      <image class="rc-img" src="{{item.menu_pic}}" bindtap="find" data-src ="{{item.menu_name}}" mode="aspectFill"/>
       <view class="rc-des">{{item.menu_effect}}</view>
       <view class="rc-title">{{item.menu_name}}</view>
       <view class="rc-type">{{item.menu_type}}</view>
       <!-- 收藏图标 还未绑定点击及颜色变化 -->
-      <!-- <image class="rc-fav" src="{{item.rc_fav}}" mode="widthFix" bindtap="onFavoriteClick" /> -->
+      <image class="rc-fav" src="{{img_fav}}" mode="widthFix" bindtap="onFavoriteClick" />
     </view>
     <view class="nomore">
       <text>没有更多啦～</text>

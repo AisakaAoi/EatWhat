@@ -5,7 +5,7 @@
       <text>{{detailName}}</text>
     </view>
     <view class="detail-img">
-      <image src="{{menu_pic}}" mode="widthFix"></image>
+      <image src="{{menu_pic}}" mode="aspectFill"></image>
     </view>
     <view class="title-des">
       <image src="/images/details/time.png" mode="widthFix"></image>
