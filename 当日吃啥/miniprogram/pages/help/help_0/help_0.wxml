@@ -1,0 +1,8 @@
+<!--pages/help/help_0/help_0.wxml-->
+<view class="title">
+  如何修改天气的定位
+</view>
+
+<view class="solution">
+  点击首页 -> 点击右上角城市 -> 选择相应城市
+</view>

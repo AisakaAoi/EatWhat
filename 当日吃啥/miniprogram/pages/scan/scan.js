@@ -1,6 +1,5 @@
-// pages/help/help.js
+// pages/scan/scan.js
 Page({
-
   /**
    * 页面的初始数据
    */

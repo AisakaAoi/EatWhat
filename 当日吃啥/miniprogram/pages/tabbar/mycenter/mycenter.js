@@ -42,11 +42,15 @@ Page({
   },
 
   toHelp: function () {
-
+    wx.navigateTo({
+      url: '../../help/helpcenter/helpcenter',
+    })
   },
 
   toAboutUs: function () {
-
+    wx.navigateTo({
+      url: '../../about/about',
+    })
   },
 
 })

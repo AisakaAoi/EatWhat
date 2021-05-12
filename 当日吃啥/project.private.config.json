@@ -51,6 +51,31 @@
         {
           "name": "pages/favorite/favorite",
           "pathName": "pages/favorite/favorite",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/scan/scan",
+          "pathName": "pages/scan/scan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/about/about",
+          "pathName": "pages/about/about",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/help/helpcenter/helpcenter",
+          "pathName": "pages/help/helpcenter/helpcenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/help/help_0/help_0",
+          "pathName": "pages/help/help_0/help_0",
+          "query": "",
           "scene": null
         }
       ]

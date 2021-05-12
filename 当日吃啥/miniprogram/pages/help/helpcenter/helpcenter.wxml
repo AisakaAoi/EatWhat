@@ -1,0 +1,32 @@
+<!--pages/help/helpcenter/helpcenter.wxml-->
+<view class="title">常见问题</view>
+<view class="person-list">
+  <button class="list-item" bindtap="toHelp_0">
+    <view class="item-text">1. 如何修改天气的定位</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+  <button class="list-item" bindtap="toHelp_1">
+    <view class="item-text">2. 如何查询菜品</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+  <button class="list-item" bindtap="toHelp_2">
+    <view class="item-text">3. 如何识别蔬菜</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+  <button class="list-item" bindtap="toHelp_3">
+    <view class="item-text">4. 如何识别菜品</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+  <button class="list-item" bindtap="toHelp_4">
+    <view class="item-text">5. 如何查看收藏</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+  <button class="list-item" bindtap="toHelp_5">
+    <view class="item-text">6. 如何收藏菜品</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+  <button class="list-item" bindtap="toHelp_6">
+    <view class="item-text">7. 如何筛选菜品</view>
+    <image class="item-arrow" src="{{arrowurl}}" mode="widthFix"></image>
+  </button>
+</view>

@@ -1,1 +1,60 @@
 /* pages/about/about.wxss */
+.about-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500rpx;
+}
+
+.about-logo image{
+  width: 600rpx;
+  height: 600rpx;
+}
+
+.about-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-text{
+  text-align: center;
+}
+
+.about-title image{
+  width: 50rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+}
+
+.about-panel{
+  width: 90%;
+  height: 500rpx;
+  background: #dddddd;
+  margin-left: 40rpx;
+  border-radius: 20rpx;
+  margin-top: 50rpx;
+}
+
+.swiper-item{
+  text-align: center;
+  margin:50rpx 50rpx 50rpx 50rpx;
+}
+
+.name{
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.aim{
+  font-size: 35rpx;
+  margin-top: 30rpx;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.description{
+  font-size: 35rpx;
+  margin-top: 30rpx;
+}
