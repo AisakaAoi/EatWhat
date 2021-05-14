@@ -1,0 +1,42 @@
+/* pages/favorite/favorite.wxss */
+.fav-item{
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+  height: 180rpx;
+  display: flex;
+}
+
+.fav-item image{
+  width: 250rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+}
+
+.fav-des{
+  margin-left: 30rpx;
+}
+
+.fav-title{
+  height: 50%;
+  font-size: 40rpx;
+}
+
+.fav-aff{
+  color: #5a5a5a;
+  margin-top: 30rpx;
+  font-size: 35rpx;
+  display: inline-block;
+  white-space: nowrap; 
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divLine-below{
+  width: auto;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  border-top: 1rpx solid #c5c5c5;
+}

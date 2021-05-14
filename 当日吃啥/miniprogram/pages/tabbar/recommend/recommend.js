@@ -9,6 +9,7 @@ Page({
     imgsrc: 100,
     region: ["", "", ""],
     weather: ["", "", "℃"],
+    img_fav: "/images/recommend/favorite.png",
   },
 
   onLoad: function () {
@@ -171,7 +172,7 @@ Page({
 
   // 绑定收藏函数
   onFavoriteClick: function(){
-    console.log("Clicking Heart")
+    console.log("Clicking Heart");
   },
 
 })

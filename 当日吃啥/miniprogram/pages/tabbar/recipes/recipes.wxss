@@ -136,18 +136,27 @@ scroll-view {
 }
 
 .filtrate .f-con {
+  width: 100%;
+  justify-content: center;
+}
+
+.filtrate .f-con-box {
   width: 40%;
   background: white;
   overflow: auto;
 }
 
 .filtrate .f-item{
-  width: 100%;
+  width: 70%;
+  height: 80rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  background: #d1d1d1;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  margin-left: 50rpx;
 }
 
 .filtrate .f-item text{

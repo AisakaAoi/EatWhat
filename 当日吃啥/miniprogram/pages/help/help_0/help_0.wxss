@@ -1,0 +1,14 @@
+/* pages/help/help_0/help_0.wxss */
+.title{
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  font-weight: bold;
+  font-size: large;
+}
+
+.solution{
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}

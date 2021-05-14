@@ -1,0 +1,55 @@
+<!--pages/about/about.wxml-->
+<view>
+  <view class="about-logo">
+    <image src="/images/about/EWlogo.png" mode="aspectFill"></image>
+  </view>
+  <view class="about-title">
+    <image src="/images/about/heart.png" mode="widthFix"></image>
+    <view class="title-text">
+      <view>我们是一个热爱</view>
+      <view>美食的团队</view>
+    </view>
+    <image src="/images/about/heart.png" mode="widthFix"></image>
+  </view>
+    <swiper indicator-dots="true" class="about-panel">
+      <swiper-item>
+        <view class="swiper-item">
+          <view class="name">
+          小爷
+        </view>
+        <view class="aim">
+          目标：提高厨艺
+        </view>
+        <view class="description">
+          <text>热衷于制作美食，喜欢尝试新鲜的菜谱，需要记录、收藏各种美食的做法</text>
+        </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item">
+          <view class="name">
+          楠sama
+        </view>
+        <view class="aim">
+          目标：探索美食
+        </view>
+        <view class="description">
+          <text>热衷于探索美食的做法，探索各种蔬菜的营养价值，搭配禁忌等信息</text>
+        </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item">
+          <view class="name">
+          泓sama、鑫sama
+        </view>
+        <view class="aim">
+          选择困难症
+        </view>
+        <view class="description">
+          <text>需要每天对一日三餐进行决策，但又十分纠结</text>
+        </view>
+        </view>
+      </swiper-item>
+  </swiper>
+</view>

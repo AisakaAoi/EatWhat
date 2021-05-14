@@ -5,13 +5,18 @@
     "pages/tabbar/recipes/recipes",
     "pages/tabbar/mycenter/mycenter",
     "pages/login/login",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/about/about",
+    "pages/help/helpcenter/helpcenter",
+    "pages/help/help_0/help_0",
+    "pages/favorite/favorite",
+    "pages/scan/scan"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#04C09E",
-    "navigationBarTitleText": "今天吃啥",
+    "navigationBarTitleText": "当日吃啥",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
