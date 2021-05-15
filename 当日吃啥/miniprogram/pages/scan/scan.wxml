@@ -1,19 +1,19 @@
 <!--pages/scan/scan.wxml-->
 <view>
   <view class="veg-title">
-    蔬菜名字
+    {{name}}
   </view>
   <view class="veg-pic">
-    <image src="/images/recommend/niurou.jpeg" mode="aspectFill"></image>
+    <image src="{{tmeppic}}" mode="aspectFill"></image>
   </view>
   <view class="rec-title">
     为你推荐
   </view>
-  <view class="recommend-context" wx:for="{{[1,2,3,4,5]}}" wx:key="this">
-      <image class="rc-img" src="/images/recommend/niurou.jpeg"mode="aspectFill"/>
-      <view class="rc-des">功效dwdadawdawdawda</view>
-      <view class="rc-title">牛肉丸糖粉</view>
-      <view class="rc-type">12312312</view>
+  <view class="recommend-context" wx:for="{{anss}}" wx:key="index" >
+      <image class="rc-img" src="{{item[0].menu_pic}}"mode="aspectFill" bindtap="find" data-item="{{item[0]}}"/>
+      <view class="rc-des">{{item[0].menu_effect}}</view>
+      <view class="rc-title">{{item[0].menu_name}}</view>
+      <view class="rc-type">{{item[0].menu_type}}</view>
       <!-- 收藏图标 还未绑定点击及颜色变化 -->
       <image class="rc-fav" src="/images/recommend/favorite.png" mode="widthFix" bindtap="onFavoriteClick" />
     </view>
