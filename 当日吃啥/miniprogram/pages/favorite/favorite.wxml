@@ -1,0 +1,16 @@
+<!--pages/favorite/favorite.wxml-->
+<scroll-view scroll-y="true">
+  <!-- 需要判断是否有收藏 -->
+  <!-- <text>暂无收藏～</text> -->
+  <view wx:for="{{rec}}" wx:key="this">
+    <view class="fav-item" bindtap="find" data-item="{{item.menu_name}}">
+      <image src="{{item.menu_pic}}" mode="aspectFill"></image>
+      <view class="fav-des">
+        <view class="fav-title">{{item.menu_name}}</view>
+        <view class="fav-aff">功效：{{item.menu_effect}}</view>
+      </view>
+    </view>
+    <view class="divLine-below"></view>
+  </view>
+</scroll-view>
+

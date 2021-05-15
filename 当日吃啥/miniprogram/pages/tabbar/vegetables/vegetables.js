@@ -2,10 +2,11 @@
 // pages/tabbar/recipes/recipes.js
 const recList = require("../../../js/list")
 const util = require("../../../js/util")
-
+var tempfilepath = ""
 Page({
 
   data: {
+    tempfilepath: "",
     rightShow: false,
     dropShow: false,
     indexShow: false,
@@ -53,6 +54,10 @@ Page({
         sizeType: ["original", "compressed"],
         sourceType: ["album", "camera"],
         success: res => {
+          var tempFilePaths = res.tempFilePaths
+          tempfilepath = res.tempFilePaths[0],
+          console.log(res.tempFilePaths[0])
+          // that.setData({tempfilepath:tempFilePaths[0]})
           wx.getFileSystemManager().readFile({
             filePath: res.tempFilePaths[0],
             encoding: "base64",
@@ -126,6 +131,14 @@ Page({
       success: res => {
         wx.hideLoading()
         console.log(res.data.result[0].name)
+        let queryBean = JSON.stringify(res.data.result[0].name)
+        console.log(tempfilepath + "ssss")
+        let  tempfilepathssss = JSON.stringify(tempfilepath)
+        wx.navigateTo({
+          url: "../../scan/scan?queryBean="+ queryBean +"&tempfilepathssss=" +tempfilepathssss,
+          // url: "../../detail/detail?queryBean=" + queryBean,
+        })
+        
       }
     })
   },

@@ -7,7 +7,7 @@
     <!-- 搜索栏 NF: 绑定搜索、模糊搜索 -->
     <view class="search-bar" mode="widthFix">
       <icon class="search-icon" size="25" type="search"></icon>
-      <input placeholder-class="ph-class" type="text" confirm-type="go" placeholder="输入搜索信息" value="{{searchValue}}" />
+     <input placeholder-class="ph-class" type="text" confirm-type="search"  bindconfirm="searchProduct" placeholder="输入搜索信息" value="{{searchValue}}" />
     </view>
 
 
@@ -36,7 +36,11 @@
       <view class="rc-title">{{item.menu_name}}</view>
       <view class="rc-type">{{item.menu_type}}</view>
       <!-- 收藏图标 还未绑定点击及颜色变化 -->
+<<<<<<< Updated upstream
       <!-- <image class="rc-fav" src="{{item.rc_fav}}" mode="widthFix" bindtap="onFavoriteClick" /> -->
+=======
+      <image class="rc-fav" src="{{img_fav}}" mode="widthFix" bindtap="onFavoriteClick" data-item="{{item}}" />
+>>>>>>> Stashed changes
     </view>
     <view class="nomore">
       <text>没有更多啦～</text>

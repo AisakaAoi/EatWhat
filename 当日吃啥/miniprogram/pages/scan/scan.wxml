@@ -1,0 +1,23 @@
+<!--pages/scan/scan.wxml-->
+<view>
+  <view class="veg-title">
+    {{name}}
+  </view>
+  <view class="veg-pic">
+    <image src="{{tmeppic}}" mode="aspectFill"></image>
+  </view>
+  <view class="rec-title">
+    为你推荐
+  </view>
+  <view class="recommend-context" wx:for="{{anss}}" wx:key="index" >
+      <image class="rc-img" src="{{item[0].menu_pic}}"mode="aspectFill" bindtap="find" data-item="{{item[0]}}"/>
+      <view class="rc-des">{{item[0].menu_effect}}</view>
+      <view class="rc-title">{{item[0].menu_name}}</view>
+      <view class="rc-type">{{item[0].menu_type}}</view>
+      <!-- 收藏图标 还未绑定点击及颜色变化 -->
+      <image class="rc-fav" src="/images/recommend/favorite.png" mode="widthFix" bindtap="onFavoriteClick" />
+    </view>
+    <view class="nomore">
+      <text>没有更多啦～</text>
+    </view>
+</view>

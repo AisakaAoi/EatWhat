@@ -9,6 +9,7 @@ Page({
     imgsrc: 100,
     region: ["广东省", "佛山市", "南海区"],
     weather: ["", "", "℃"],
+<<<<<<< Updated upstream
     // 用于动态数据绑定
     /*
     rec: [{
@@ -75,6 +76,26 @@ Page({
   },
 
   onLoad: function () {
+=======
+    img_fav: "/images/recommend/favorite.png",
+    img_fav_white: "/images/recommend/favorite_1.png",
+  },
+
+  onLoad: function () {
+    
+    let open_id= wx.getStorageSync("openid");
+    console.log(open_id.length)
+    
+    if(open_id.length==0)
+    {
+      console.log("aaa")
+      wx.navigateTo({
+        url:"../../login/login"
+      })
+    }
+    
+    let that = this
+>>>>>>> Stashed changes
     // 获取页面高度
     wx.getSystemInfo({
       success: res => {
@@ -90,9 +111,17 @@ Page({
     let that = this
     let temp = setInterval(() => {
       if (that.data.weather[0] != "") {
+<<<<<<< Updated upstream
         db.collection("menu").where({
           Suit_wea: that.data.weather[0],
         }).get()
+=======
+        db.collection("menu")
+        // .where({
+        //   menu_name:"麻婆豆腐",
+        // })
+        .get()
+>>>>>>> Stashed changes
         .then(res => {
           that.setData({
             rec: res.data
@@ -103,6 +132,55 @@ Page({
     }, 1000)
   },
 
+<<<<<<< Updated upstream
+=======
+  onShow: function () {
+    img_fav: "/images/recommend/favorite.png"
+    
+  },
+
+  getLocationRequest: function () {
+    let that = this
+    wx.getLocation({
+      type: "wgs84",
+      success: res => {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        that.getLocal(latitude, longitude)
+      },
+      fail: res => {
+      }
+    })
+  },
+
+  getLocal: function (latitude, longitude) {
+    let that = this
+    wx.request({     
+      url: "http://api.map.baidu.com/reverse_geocoding/v3/?ak=mEUqB6cTeu9CsjDGt0CrPcdYKPAeWKUh&output=json&coordtype=gcj02&location=" + latitude + "," + longitude,
+      data: {},
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: ops => {
+ 
+        that.setData({
+          "region[0]": ops.data.result.addressComponent.province,
+          "region[1]": ops.data.result.addressComponent.city,
+          "region[2]": ops.data.result.addressComponent.district,
+        })
+      },
+      fail: _ => {
+        wx.showModal({
+          title: "信息提示",
+          content: "请求失败",
+          showCancel: false,
+          confirmColor: "#f37938",
+        })
+      }
+    })
+  },
+
+>>>>>>> Stashed changes
   // 实现选择城市改变region数据
   bindRegionChange: function (e) {
     this.setData({
@@ -145,6 +223,7 @@ Page({
     this.onShow();
   },
 
+<<<<<<< Updated upstream
   find: function() {
 
   },
@@ -152,6 +231,109 @@ Page({
   // 绑定收藏函数
   onFavoriteClick: function(){
     console.log("Clicking Heart")
+=======
+  find: function(e) {
+    let queryBean = JSON.stringify(e.target.dataset.src)
+    wx.navigateTo({
+      url: "../../detail/detail?queryBean=" + queryBean,
+    })
   },
+
+  // 绑定收藏函数
+  onFavoriteClick: function(e){
+    if(this.data.img_fav == "/images/recommend/favorite.png")
+    {
+      let open_id=wx.getStorageSync("openid");
+      
+      db.collection('favorite').where({
+        username : open_id,
+        menu_name:e.currentTarget.dataset.item.menu_name
+      })
+      .get()
+      .then(res=>{
+        console.log(res.data.length)
+        if(res.data.length==0)
+        {
+          db.collection('favorite').add({
+            data: {
+              username: open_id,
+              menu_pic:e.currentTarget.dataset.item.menu_pic,
+              menu_name:e.currentTarget.dataset.item.menu_name,
+              menu_effect:e.currentTarget.dataset.item.menu_effect,
+            },
+            success: res => {
+              this.setData({
+                img_fav : "/images/recommend/favorite_1.png"
+              })
+              wx.showToast({
+                title: '收藏菜品成功',
+              })
+            },
+          })
+        }
+        else{
+          wx.showToast({
+            title: '菜品已经收藏',
+          })
+        }
+      })
+    }   
+    else
+    {
+      this.setData({
+        img_fav : "/images/recommend/favorite.png"
+      })
+      let open_id=wx.getStorageSync("openid");
+      db.collection("favorite").where({
+        menu_name:e.currentTarget.dataset.item.menu_name,
+        username : open_id,
+      })
+      .get()
+      .then(res=>{
+        let menuid = res.data[0]._id
+
+        db.collection('favorite').doc(menuid).remove({
+          success: res => {
+            wx.showToast({
+              title: '删除收藏菜品成功',
+            })
+          },
+          fail: err => {
+            wx.showToast({
+              title: '删除失败',
+            })
+          }
+        })
+      })
+    }
+   
+  },
+  searchProduct:function(e){
+    let that = this
+    if(e.detail.value=="")
+    {
+      db.collection("menu")
+        .get()
+        .then(res => {
+          let data = res.data
+          that.setData({
+            rec: data
+          })
+        })
+    }
+    db.collection("menu")
+         .where({
+           menu_name: e.detail.value,
+        })
+        .get()
+        .then(res => {
+          let data = res.data
+          that.setData({
+            rec: data
+          })
+        })
+>>>>>>> Stashed changes
+  },
+
 
 })

@@ -2,7 +2,11 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
+<<<<<<< Updated upstream
 		"urlCheck": true,
+=======
+		"urlCheck": false,
+>>>>>>> Stashed changes
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -19,19 +23,32 @@
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"compileHotReLoad": false,
+<<<<<<< Updated upstream
+=======
+		"useMultiFrameRuntime": true,
+		"useApiHook": true,
+		"useApiHostProcess": false,
+>>>>>>> Stashed changes
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+<<<<<<< Updated upstream
+=======
+		"enableEngineNative": false,
+>>>>>>> Stashed changes
 		"bundle": false,
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false,
+<<<<<<< Updated upstream
 		"useMultiFrameRuntime": true,
 		"useApiHook": true,
 		"useApiHostProcess": false,
 		"enableEngineNative": false,
+=======
+>>>>>>> Stashed changes
 		"userConfirmedBundleSwitch": false,
 		"packNpmManually": false,
 		"packNpmRelationList": [],
@@ -71,6 +88,10 @@
 					"id": -1,
 					"name": "pages/tabbar/vegetables/vegetables",
 					"pathName": "pages/tabbar/vegetables/vegetables",
+<<<<<<< Updated upstream
+=======
+					"query": "",
+>>>>>>> Stashed changes
 					"scene": null
 				}
 			]

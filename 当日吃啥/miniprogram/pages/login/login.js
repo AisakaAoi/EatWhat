@@ -62,6 +62,7 @@ Page({
     .then(res => {
       // 存入本地缓存和小程序缓存
       wx.setStorageSync("openid", res.result.openid)
+      console.log(res.result.openid)
     })
     .catch(err => {
       // ------------------
