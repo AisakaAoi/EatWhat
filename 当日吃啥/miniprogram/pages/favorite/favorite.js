@@ -1,3 +1,5 @@
+const db = wx.cloud.database()
+let that = this
 // pages/favorite/favorite.js
 Page({
 
@@ -12,7 +14,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let open_id=wx.getStorageSync("openid");
+    db.collection("favorite")
+         .where({
+          username: open_id,
+         })
+        .get()
+        .then(res => {
+          console.log(res.data)
+          this.setData({
+            rec: res.data
+          })
+        })
   },
 
   /**
@@ -41,6 +54,7 @@ Page({
    */
   onUnload: function () {
 
+
   },
 
   /**
@@ -62,5 +76,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  find:function(e){
+    console.log(e.currentTarget.dataset.item)
+    let queryBean = JSON.stringify(e.currentTarget.dataset.item)
+    console.log(queryBean+"aaa")
+    wx.navigateTo({
+      url: "../detail/detail?queryBean=" + queryBean,
+    })
   }
 })
