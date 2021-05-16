@@ -16,7 +16,7 @@ page {
 }
 
 .scan-center image {
-  border: 5rpx solid #04C09E;
+  border: 5rpx solid #78C613;
   border-radius: 5%;
   width: 300rpx;
 }

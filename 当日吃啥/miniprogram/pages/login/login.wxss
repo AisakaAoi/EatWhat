@@ -23,7 +23,7 @@
   margin-top: 40rpx;
 }
 .login-btn{
-  background-color: #04C09E;
+  background-color: #78C613;
   color: white;
   border-radius: 15rpx;
   margin-top: 100rpx;
