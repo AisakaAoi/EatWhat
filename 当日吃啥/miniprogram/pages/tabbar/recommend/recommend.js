@@ -15,11 +15,10 @@ Page({
 
   onLoad: function () {
     
-    let open_id= wx.getStorageSync("openid");
+    let open_id = wx.getStorageSync("openid")
     console.log(open_id.length)
     
-    if(open_id.length==0)
-    {
+    if(open_id.length == 0) {
       console.log("aaa")
       wx.navigateTo({
         url:"../../login/login"
@@ -90,8 +89,6 @@ Page({
         let latitude = res.latitude
         let longitude = res.longitude
         that.getLocal(latitude, longitude)
-      },
-      fail: res => {
       }
     })
   },
@@ -156,15 +153,16 @@ Page({
         }
         that.setData({
           city: city,
-          "weather[0]" : res.data.HeWeather6[0].now.cond_txt,
+          "weather[0]": res.data.HeWeather6[0].now.cond_txt,
           "weather[1]": res.data.HeWeather6[0].now.tmp,
         })
 
         // 暂时的刷新推荐页面
-        that.setData({
-          rec: util.shuffle(that.data.rec),
-        })
-
+        if (that.data.rec != null) {
+          that.setData({
+            rec: util.shuffle(that.data.rec),
+          })
+        }
       },
       complete: _ => {
         wx.hideLoading()
@@ -181,19 +179,14 @@ Page({
 
   // 绑定收藏函数
   onFavoriteClick: function(e){
-    if(this.data.img_fav == "/images/recommend/favorite.png")
-    {
-      let open_id=wx.getStorageSync("openid");
-      
+    if (this.data.img_fav == "/images/recommend/favorite.png") {
+      let open_id = wx.getStorageSync("openid")
       db.collection('favorite').where({
         username : open_id,
         menu_name:e.currentTarget.dataset.item.menu_name
-      })
-      .get()
-      .then(res=>{
-        console.log(res.data.length)
-        if(res.data.length==0)
-        {
+      }).get()
+      .then(res => {
+        if (res.data.length == 0) {
           db.collection('favorite').add({
             data: {
               username: open_id,
@@ -201,77 +194,60 @@ Page({
               menu_name:e.currentTarget.dataset.item.menu_name,
               menu_effect:e.currentTarget.dataset.item.menu_effect,
             },
-            success: res => {
+            success: _ => {
               this.setData({
                 img_fav : "/images/recommend/favorite_1.png"
               })
-              wx.showToast({
-                title: '收藏菜品成功',
-              })
-            },
+              util.showSuccessToast("收藏菜品成功")
+            }
           })
-        }
-        else{
-          wx.showToast({
-            title: '菜品已经收藏',
-          })
+        } else {
+          util.showSuccessToast("菜品已经收藏")
         }
       })
-    }   
-    else
-    {
+    } else {
+      let open_id = wx.getStorageSync("openid")
       this.setData({
-        img_fav : "/images/recommend/favorite.png"
+        img_fav : "/images/recommend/favorite.png",
       })
-      let open_id=wx.getStorageSync("openid");
       db.collection("favorite").where({
         menu_name:e.currentTarget.dataset.item.menu_name,
         username : open_id,
-      })
-      .get()
-      .then(res=>{
+      }).get()
+      .then(res => {
         let menuid = res.data[0]._id
-
         db.collection('favorite').doc(menuid).remove({
-          success: res => {
-            wx.showToast({
-              title: '删除收藏菜品成功',
-            })
+          success: _ => {
+            util.showSuccessToast("删除收藏菜品成功")
           },
-          fail: err => {
-            wx.showToast({
-              title: '删除失败',
-            })
+          fail: _ => {
+            util.showErrorToast("删除失败")
           }
         })
       })
     }
-   
   },
-  searchProduct:function(e){
+
+  searchProduct: function(e) {
     let that = this
-    if(e.detail.value=="")
-    {
-      db.collection("menu")
-        .get()
-        .then(res => {
-          let data = res.data
-          that.setData({
-            rec: data
-          })
+    if (e.detail.value == "") {
+      db.collection("menu").get()
+      .then(res => {
+        let data = res.data
+        that.setData({
+          rec: data
         })
+      })
     }
-    db.collection("menu")
-         .where({
-           menu_name: e.detail.value,
-        })
-        .get()
-        .then(res => {
-          let data = res.data
-          that.setData({
-            rec: data
-          })
-        })
+    db.collection("menu").where({
+      menu_name: e.detail.value,
+    }).get()
+    .then(res => {
+      let data = res.data
+      that.setData({
+        rec: data
+      })
+    })
   },
 
 

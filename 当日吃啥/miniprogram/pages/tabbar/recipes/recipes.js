@@ -21,13 +21,11 @@ Page({
     y: 0,
     // 侧边栏实现
     filtrate: false,
-    filterData: ["素菜", "荤菜", "面食", "小吃", "粥", "汤", "甜品", "饮品", "海鲜",
-    "卤菜", "沙拉", "便当", "汉堡", "面包", "披萨"],
+    filterData: ["素菜", "荤菜", "面食", "小吃", "粥", "汤", "甜品", "饮品", "海鲜", "卤菜", "沙拉", "便当", "汉堡", "面包", "披萨"],
   },
 
-  onLoad: function (options) {
+  onLoad: function () {
     let that = this
-
     wx.getSystemInfo({
       success: res => {
         that.setData({

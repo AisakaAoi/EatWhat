@@ -1,20 +1,20 @@
 // pages/detail/detail.js
-const db = wx.cloud.database();
-const _ = db.command;
+const db = wx.cloud.database()
+
 Page({
 
   data: {
     detailName: "",
     Suit_wea: "约20～30分钟",
     type: "",
-    menu_effect:"",
+    menu_effect: "",
     numOf: 3,
     step: [],
     listData: [],
   },
 
   onLoad: function (options) {
-    let queryBean = JSON.parse(options.queryBean);
+    let queryBean = JSON.parse(options.queryBean)
     console.log(queryBean)
     
     //查找菜谱
@@ -39,9 +39,8 @@ Page({
       menu_name: queryBean,
     }).get()
     .then(res => {
-      console.log(res.data)
       this.setData({
-        listData:res.data,
+        listData: res.data,
         // cfList:res.data,
       })
     })
@@ -56,7 +55,6 @@ Page({
     this.setData({
       numOf: num + 1,
     })
-    console.log(this.data.numOf)
   },
 
   numRed: function () {
@@ -64,7 +62,6 @@ Page({
     this.setData({
       numOf: num - 1,
     })
-    console.log(this.data.numOf)
   },
 
 })
