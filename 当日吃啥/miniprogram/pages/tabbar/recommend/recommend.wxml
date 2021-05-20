@@ -36,7 +36,7 @@
       <view class="rc-title">{{item.menu_name}}</view>
       <view class="rc-type">{{item.menu_type}}</view>
       <!-- 收藏图标 还未绑定点击及颜色变化 -->
-      <image class="rc-fav" src="{{img_fav}}" mode="widthFix" bindtap="onFavoriteClick" data-item="{{item}}" />
+      <image class="rc-fav" src="{{img_fav}}" mode="widthFix" bindtap="onFavoriteClick" data-item="{{item}}" data-index="{{index}}" />
     </view>
     <view class="nomore">
       <text>没有更多啦～</text>

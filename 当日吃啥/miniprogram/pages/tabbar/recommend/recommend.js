@@ -16,10 +16,8 @@ Page({
   onLoad: function () {
     
     let open_id = wx.getStorageSync("openid")
-    console.log(open_id.length)
     
     if(open_id.length == 0) {
-      console.log("aaa")
       wx.navigateTo({
         url:"../../login/login"
       })
@@ -77,7 +75,6 @@ Page({
   },
 
   onShow: function () {
-    img_fav: "/images/recommend/favorite.png"
     
   },
 
@@ -179,11 +176,12 @@ Page({
 
   // 绑定收藏函数
   onFavoriteClick: function(e){
+    console.log(e)
     if (this.data.img_fav == "/images/recommend/favorite.png") {
       let open_id = wx.getStorageSync("openid")
       db.collection('favorite').where({
         username : open_id,
-        menu_name:e.currentTarget.dataset.item.menu_name
+        menu_name: e.currentTarget.dataset.item.menu_name, 
       }).get()
       .then(res => {
         if (res.data.length == 0) {
