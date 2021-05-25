@@ -6,11 +6,14 @@ Page({
   data: {
     detailName: "",
     Suit_wea: "约20～30分钟",
+    time: "约30～40分钟",
+    difficulty: "普通",
     type: "",
     menu_effect: "",
     numOf: 3,
     step: [],
     listData: [],
+    fav_icon: "/images/details/favorite.png",
   },
 
   onLoad: function (options) {
@@ -61,6 +64,13 @@ Page({
     let num = this.data.numOf
     this.setData({
       numOf: num - 1,
+    })
+  },
+
+  favorite: function(){
+    console.log("Favorite!");
+    this.setData({
+      fav_icon: "/images/details/favorite_1.png"
     })
   },
 

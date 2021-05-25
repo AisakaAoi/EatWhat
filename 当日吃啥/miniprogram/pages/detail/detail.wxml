@@ -16,7 +16,7 @@
       <text>{{difficulty}}</text>
     </view>
     <view class="title-favorite">
-      <image src="/images/details/favorite.png" mode="widthFix"></image>
+      <image src="{{fav_icon}}" mode="widthFix" bindtap="favorite"></image>
       <text>收藏</text>
     </view>
     <view class="divLine"></view>

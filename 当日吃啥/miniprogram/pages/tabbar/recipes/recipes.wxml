@@ -45,7 +45,7 @@
     <view class="f-con">
     <view class="f-item" wx:for="{{filterData}}" wx:key="this" bindtap="selectFilter" data-item="{{item}}">
       <text>{{item}}</text>
-      <text>123</text>
+      <!-- <text>123</text> -->
     </view>
   </view>
   </view>
