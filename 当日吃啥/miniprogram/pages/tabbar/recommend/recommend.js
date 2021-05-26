@@ -63,9 +63,9 @@ Page({
     let temp = setInterval(() => {
       if (that.data.weather[0] != "") {
         db.collection("menu")
-        .where({
-          Suit_wea:that.data.weather[0],
-        })
+        // .where({
+        //   Suit_wea:that.data.weather[0],
+        // })
         .limit(5)
         .get()
         .then(res => {
