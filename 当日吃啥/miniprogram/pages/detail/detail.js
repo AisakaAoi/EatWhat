@@ -5,6 +5,9 @@ Page({
 
   data: {
     detailName: "",
+    img_fav: "/images/details/favorite.png",
+    img_fav_white: "/images/details/favorite.png",
+    img_fav_back: "images/recommend/favorite_1.png",
     Suit_wea: "约20～30分钟",
     type: "",
     menu_effect: "",
@@ -48,6 +51,9 @@ Page({
 
   onShow: function () {
 
+  },
+  fav:function(e){
+    console.log(e.target.dataset.item)
   },
 
   numAdd: function () {

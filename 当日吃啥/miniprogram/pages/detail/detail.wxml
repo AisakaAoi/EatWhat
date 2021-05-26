@@ -7,16 +7,16 @@
     <view class="detail-img">
       <image src="{{menu_pic}}" mode="aspectFill"></image>
     </view>
-    <view class="title-des">
+    <!-- <view class="title-des">
       <image src="/images/details/time.png" mode="widthFix"></image>
       <text>时间</text>
       <text>{{time}}</text>
       <image style="margin-left: 50rpx" src="/images/details/diff.png" mode="widthFix"></image>
       <text>难度</text>
       <text>{{difficulty}}</text>
-    </view>
+    </view> -->
     <view class="title-favorite">
-      <image src="/images/details/favorite.png" mode="widthFix"></image>
+      <image src="{{img_fav}}" mode="widthFix" bindtap = "fav" data-item="{{detailName}}" ></image>
       <text>收藏</text>
     </view>
     <view class="divLine"></view>
@@ -44,7 +44,7 @@
   </view>
 </view>
 
-<view class="analysis-panel">
+<!-- <view class="analysis-panel">
   <view class="panel-row">
     <view class="panel-item">
       <image src="/images/details/calorie.png" class="panel-icon" mode="widthFix"></image>
@@ -69,7 +69,7 @@
       <text>--</text>
     </view>
   </view>
-</view>
+</view> -->
 <view class="step">
   功效
 </view>

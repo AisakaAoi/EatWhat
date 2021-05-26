@@ -139,9 +139,7 @@ Page({
         let  tempfilepathssss = JSON.stringify(tempfilepath)
         wx.navigateTo({
           url: "../../scan/scan?queryBean="+ queryBean +"&tempfilepathssss=" +tempfilepathssss,
-          // url: "../../detail/detail?queryBean=" + queryBean,
         })
-        
       }
     })
   },
