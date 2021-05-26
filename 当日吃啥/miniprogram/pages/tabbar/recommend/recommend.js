@@ -7,13 +7,19 @@ Page({
   data: {
     search_city: "",
     imgsrc: 100,
-    region: ["", "", ""],
+    region: ["广东省", "广州市", "越秀区"],
     weather: ["", "", "℃"],
+    img_fav_a:["/images/recommend/favorite.png","/images/recommend/favorite.png","/images/recommend/favorite.png","/images/recommend/favorite.png","/images/recommend/favorite.png"],
     img_fav: "/images/recommend/favorite.png",
     img_fav_white: "/images/recommend/favorite_1.png",
   },
 
   onLoad: function () {
+    wx.authorize({
+      scope: 'scope.userLocation',
+      success: (res) => {
+      },
+     })
     
     let open_id = wx.getStorageSync("openid")
     
@@ -57,14 +63,39 @@ Page({
     let temp = setInterval(() => {
       if (that.data.weather[0] != "") {
         db.collection("menu")
-        // .where({
-        //   menu_name:"麻婆豆腐",
-        // })
+        .where({
+          Suit_wea:that.data.weather[0],
+        })
+        .limit(5)
         .get()
         .then(res => {
           let data = res.data
           // 洗牌
           data = util.shuffle(data)
+          // console.log(data)
+          let open_id = wx.getStorageSync("openid")
+          for(let j = 0;j<data.length;j++)
+          {
+            //  console.log(data[j].menu_name)
+              db.collection('favorite')
+              .where({
+                username :open_id,
+                menu_name : data[j].menu_name
+              })
+              .get()
+              .then(res=>{
+                if(res.data.length!=0)
+                {
+                    this.setData({
+                      ["img_fav_a[" + j + "]"]: this.data.img_fav_white
+                    })
+                }
+                
+              })
+          }
+
+
+
           that.setData({
             rec: data
           })
@@ -99,6 +130,7 @@ Page({
         "Content-Type": "application/json"
       },
       success: ops => {
+        console.log(ops.data.result.addressComponent)
  
         that.setData({
           "region[0]": ops.data.result.addressComponent.province,
@@ -176,8 +208,7 @@ Page({
 
   // 绑定收藏函数
   onFavoriteClick: function(e){
-    console.log(e)
-    if (this.data.img_fav == "/images/recommend/favorite.png") {
+    console.log(e.target.dataset.index)
       let open_id = wx.getStorageSync("openid")
       db.collection('favorite').where({
         username : open_id,
@@ -186,44 +217,23 @@ Page({
       .then(res => {
         if (res.data.length == 0) {
           db.collection('favorite').add({
-            data: {
+            data:{
               username: open_id,
               menu_pic:e.currentTarget.dataset.item.menu_pic,
               menu_name:e.currentTarget.dataset.item.menu_name,
               menu_effect:e.currentTarget.dataset.item.menu_effect,
-            },
-            success: _ => {
-              this.setData({
-                img_fav : "/images/recommend/favorite_1.png"
-              })
-              util.showSuccessToast("收藏菜品成功")
             }
+          }).then(res=>{
+            this.setData({
+              ["img_fav_a[" + e.target.dataset.index + "]"]: this.data.img_fav_white
+              
+            })
+            util.showSuccessToast("收藏菜品成功")
           })
         } else {
           util.showSuccessToast("菜品已经收藏")
         }
       })
-    } else {
-      let open_id = wx.getStorageSync("openid")
-      this.setData({
-        img_fav : "/images/recommend/favorite.png",
-      })
-      db.collection("favorite").where({
-        menu_name:e.currentTarget.dataset.item.menu_name,
-        username : open_id,
-      }).get()
-      .then(res => {
-        let menuid = res.data[0]._id
-        db.collection('favorite').doc(menuid).remove({
-          success: _ => {
-            util.showSuccessToast("删除收藏菜品成功")
-          },
-          fail: _ => {
-            util.showErrorToast("删除失败")
-          }
-        })
-      })
-    }
   },
 
   searchProduct: function(e) {
