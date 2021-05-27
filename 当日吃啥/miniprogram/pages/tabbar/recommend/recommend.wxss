@@ -14,7 +14,7 @@ page{
 
 .search-bar{
   background-color: white;
-  width: 60%;
+  width: 80%;
   border: 1px solid #d0d0d0;
   border-radius: 50rpx;
   margin-left: 30rpx;
